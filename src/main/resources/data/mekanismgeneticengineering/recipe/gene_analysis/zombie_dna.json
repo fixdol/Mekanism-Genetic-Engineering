@@ -1,0 +1,18 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:zombie_dna"
+  },
+  "first_output":
+  {
+    "amount":200,
+    "id":"mekanismgeneticengineering:undead_gene"
+  },
+  "second_output":
+  {
+    "amount":200,
+    "id":"mekanismgeneticengineering:soft_body_gene"
+  }
+}

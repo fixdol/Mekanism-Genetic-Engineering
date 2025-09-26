@@ -1,0 +1,18 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:goat_dna"
+  },
+  "first_output":
+  {
+    "amount":100,
+    "id":"mekanismgeneticengineering:cold_resistance_gene"
+  },
+  "second_output":
+  {
+    "amount":100,
+    "id":"mekanismgeneticengineering:jumping_gene"
+  }
+}

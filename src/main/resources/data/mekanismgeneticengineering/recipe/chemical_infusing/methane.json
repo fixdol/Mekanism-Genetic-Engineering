@@ -1,0 +1,18 @@
+{
+  "type":"mekanism:chemical_infusing",
+  "left_input":
+  {
+    "amount":1,
+    "chemical":"mekanism:carbon"
+  },
+  "output":
+  {
+    "amount":1,
+    "id":"mekanismgeneticengineering:methane"
+  },
+  "right_input":
+  {
+    "amount":2,
+    "chemical":"mekanism:water_vapor"
+  }
+}

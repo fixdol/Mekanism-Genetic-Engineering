@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:nuclear_acid_centrifuge",
+  "item_input":
+  {
+    "count": 1,
+    "item": "minecraft:creeper_head"
+  },
+  "left_input":
+  {
+    "amount":100,
+    "chemical":"mekanismgeneticengineering:phenol"
+  },
+  "output":
+  {
+    "amount":100,
+    "id":"mekanismgeneticengineering:creeper_dna"
+  },
+  "right_input":
+  {
+    "amount":100,
+    "chemical":"mekanismgeneticengineering:chloroform"
+  }
+}

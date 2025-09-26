@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:wither_dna"
+  },
+  "first_output":
+  {
+    "amount":3000,
+    "id":"mekanismgeneticengineering:undead_gene"
+  },
+  "second_output":
+  {
+    "amount":3000,
+    "id":"mekanismgeneticengineering:using_effect_gene"
+  },
+  "third_output":
+  {
+    "amount":3000,
+    "id":"mekanismgeneticengineering:spatial_awareness_gene"
+  }
+}

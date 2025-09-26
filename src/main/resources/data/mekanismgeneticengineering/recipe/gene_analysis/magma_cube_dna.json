@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:magma_cube_dna"
+  },
+  "first_output":
+  {
+    "amount":160,
+    "id":"mekanismgeneticengineering:hot_resistance_gene"
+  },
+  "second_output":
+  {
+    "amount":160,
+    "id":"mekanismgeneticengineering:proliferation_gene"
+  },
+  "third_output":
+  {
+    "amount":160,
+    "id":"mekanismgeneticengineering:soft_body_gene"
+  }
+}

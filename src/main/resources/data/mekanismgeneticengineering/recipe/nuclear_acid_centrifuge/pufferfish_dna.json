@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:nuclear_acid_centrifuge",
+  "item_input":
+  {
+    "count": 1,
+    "item": "minecraft:pufferfish"
+  },
+  "first_input":
+  {
+    "amount":100,
+    "chemical":"mekanismgeneticengineering:phenol"
+  },
+  "second_input":
+  {
+    "amount":100,
+    "chemical":"mekanismgeneticengineering:chloroform"
+  },
+  "output":
+  {
+    "amount":100,
+    "id":"mekanismgeneticengineering:pufferfish_dna"
+  }
+}

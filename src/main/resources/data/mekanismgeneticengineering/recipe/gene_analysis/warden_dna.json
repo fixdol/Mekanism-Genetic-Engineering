@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:warden_dna"
+  },
+  "first_output":
+  {
+    "amount":5000,
+    "id":"mekanismgeneticengineering:hearing_gene"
+  },
+  "second_output":
+  {
+    "amount":5000,
+    "id":"mekanismgeneticengineering:smell_gene"
+  },
+  "third_output":
+  {
+    "amount":5000,
+    "id":"mekanismgeneticengineering:spatial_awareness_gene"
+  }
+}
