@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:witch_dna"
+  },
+  "first_output":
+  {
+    "amount":260,
+    "id":"mekanismgeneticengineering:intelligence_gene"
+  },
+  "second_output":
+  {
+    "amount":260,
+    "id":"mekanismgeneticengineering:using_effect_gene"
+  },
+  "third_output":
+  {
+    "amount":260,
+    "id":"mekanismgeneticengineering:evilness_gene"
+  }
+}

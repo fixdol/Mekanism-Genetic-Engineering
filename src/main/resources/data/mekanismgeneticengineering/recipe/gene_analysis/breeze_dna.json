@@ -1,0 +1,18 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:breeze_dna"
+  },
+  "first_output":
+  {
+    "amount":300,
+    "id":"mekanismgeneticengineering:speed_gene"
+  },
+  "second_output":
+  {
+    "amount":300,
+    "id":"mekanismgeneticengineering:spatial_awareness_gene"
+  }
+}

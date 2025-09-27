@@ -10,6 +10,7 @@ import mekanism.api.chemical.IChemicalHandler;
 import mekanism.common.capabilities.Capabilities;
 import mekanism.common.item.ItemGaugeDropper;
 import net.minecraft.core.Holder;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -24,9 +25,9 @@ public class Syringe extends ItemGaugeDropper {
     @Override
     public boolean hurtEnemy(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         Level level = attacker.level();
-        if (!level.isClientSide && attacker instanceof Player player) {
-            var mobId = target.getType().builtInRegistryHolder().key().location();
-            Holder<Chemical> chemicalHolder = MobDNAMapping.getDNAForMob(mobId);
+        if (!level.isClientSide && attacker instanceof Player) {
+            EntityType<?> type = target.getType();
+            Holder<Chemical> chemicalHolder = MobDNAMapping.getDNAForMob(type);
 
             if (chemicalHolder != null) {
                 IChemicalHandler handler = Capabilities.CHEMICAL.getCapability(stack);

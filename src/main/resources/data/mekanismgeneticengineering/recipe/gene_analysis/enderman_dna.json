@@ -1,0 +1,18 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:enderman_dna"
+  },
+  "first_output":
+  {
+    "amount":400,
+    "id":"mekanismgeneticengineering:intelligence_gene"
+  },
+  "second_output":
+  {
+    "amount":400,
+    "id":"mekanismgeneticengineering:speed_gene"
+  }
+}

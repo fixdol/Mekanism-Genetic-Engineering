@@ -1,0 +1,18 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:salmon_dna"
+  },
+  "first_output":
+  {
+    "amount":30,
+    "id":"mekanismgeneticengineering:underwater_adaptation_gene"
+  },
+  "second_output":
+  {
+    "amount":30,
+    "id":"mekanismgeneticengineering:general_environmental_compatibility_gene"
+  }
+}

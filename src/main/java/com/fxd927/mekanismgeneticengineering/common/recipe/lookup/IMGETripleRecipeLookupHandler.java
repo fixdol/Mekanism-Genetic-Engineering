@@ -121,4 +121,8 @@ public interface IMGETripleRecipeLookupHandler <INPUT_A, INPUT_B, INPUT_C, RECIP
     interface ItemDoubleChemicalRecipeLookupHandler<RECIPE extends MekanismRecipe<?> & TriPredicate<ItemStack, ChemicalStack, ChemicalStack>> extends
             IMGETripleRecipeLookupHandler<ItemStack, ChemicalStack, ChemicalStack, RECIPE, MGEInputRecipeCache.ItemChemicalChemical<RECIPE>> {
     }
+
+    interface TriChemicalRecipeLookupHandler<RECIPE extends MekanismRecipe<?> & TriPredicate<ChemicalStack, ChemicalStack, ChemicalStack>> extends
+            IMGETripleRecipeLookupHandler<ChemicalStack, ChemicalStack, ChemicalStack, RECIPE, MGEInputRecipeCache.TriChemical<RECIPE>> {
+    }
 }

@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:zoglin_dna"
+  },
+  "first_output":
+  {
+    "amount":400,
+    "id":"mekanismgeneticengineering:undead_gene"
+  },
+  "second_output":
+  {
+    "amount":400,
+    "id":"mekanismgeneticengineering:soft_body_gene"
+  },
+  "third_output":
+  {
+    "amount":400,
+    "id":"mekanismgeneticengineering:smell_gene"
+  }
+}

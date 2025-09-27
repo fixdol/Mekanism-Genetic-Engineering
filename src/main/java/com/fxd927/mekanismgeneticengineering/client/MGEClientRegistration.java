@@ -2,6 +2,7 @@ package com.fxd927.mekanismgeneticengineering.client;
 
 import com.fxd927.mekanismgeneticengineering.client.gui.machine.GuiGeneAnalyzer;
 import com.fxd927.mekanismgeneticengineering.client.gui.machine.GuiNuclearAcidCentrifuge;
+import com.fxd927.mekanismgeneticengineering.client.gui.machine.GuiTraitDecodingProjector;
 import com.fxd927.mekanismgeneticengineering.common.registries.MGEContainerTypes;
 import mekanism.client.ClientRegistrationUtil;
 import mekanism.client.gui.machine.GuiChemicalInfuser;
@@ -14,8 +15,7 @@ import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 
 @EventBusSubscriber(
         modid = "mekanismgeneticengineering",
-        value = {Dist.CLIENT},
-        bus = EventBusSubscriber.Bus.MOD
+        value = {Dist.CLIENT}
 )
 public class MGEClientRegistration {
 
@@ -26,5 +26,6 @@ public class MGEClientRegistration {
     public static void registerScreens(RegisterMenuScreensEvent event) {
         ClientRegistrationUtil.registerScreen(event, MGEContainerTypes.NUCLEAR_ACID_CENTRIFUGE, GuiNuclearAcidCentrifuge::new);
         ClientRegistrationUtil.registerScreen(event, MGEContainerTypes.GENE_ANALYZER, GuiGeneAnalyzer::new);
+        ClientRegistrationUtil.registerScreen(event, MGEContainerTypes.TRAIT_DECODING_PROJECTOR, GuiTraitDecodingProjector::new);
     }
 }

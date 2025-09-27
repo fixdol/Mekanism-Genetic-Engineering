@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:vex_dna"
+  },
+  "first_output":
+  {
+    "amount":140,
+    "id":"mekanismgeneticengineering:intelligence_gene"
+  },
+  "second_output":
+  {
+    "amount":140,
+    "id":"mekanismgeneticengineering:evilness_gene"
+  },
+  "third_output":
+  {
+    "amount":140,
+    "id":"mekanismgeneticengineering:flight_gene"
+  }
+}

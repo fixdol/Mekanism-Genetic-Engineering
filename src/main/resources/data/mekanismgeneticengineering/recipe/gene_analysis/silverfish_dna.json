@@ -1,0 +1,18 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:silverfish_dna"
+  },
+  "first_output":
+  {
+    "amount":80,
+    "id":"mekanismgeneticengineering:bug_gene"
+  },
+  "second_output":
+  {
+    "amount":80,
+    "id":"mekanismgeneticengineering:multiplication_gene"
+  }
+}

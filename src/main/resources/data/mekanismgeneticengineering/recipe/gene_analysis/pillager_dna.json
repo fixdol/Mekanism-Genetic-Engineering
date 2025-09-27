@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:pillager_dna"
+  },
+  "first_output":
+  {
+    "amount":240,
+    "id":"mekanismgeneticengineering:general_environmental_compatibility_gene"
+  },
+  "second_output":
+  {
+    "amount":240,
+    "id":"mekanismgeneticengineering:intelligence_gene"
+  },
+  "third_output":
+  {
+    "amount":240,
+    "id":"mekanismgeneticengineering:evilness_gene"
+  }
+}

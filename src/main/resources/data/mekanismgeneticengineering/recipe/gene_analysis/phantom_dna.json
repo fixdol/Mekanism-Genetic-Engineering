@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:phantom_dna"
+  },
+  "first_output":
+  {
+    "amount":200,
+    "id":"mekanismgeneticengineering:undead_gene"
+  },
+  "second_output":
+  {
+    "amount":200,
+    "id":"mekanismgeneticengineering:night_vision_gene"
+  },
+  "third_output":
+  {
+    "amount":200,
+    "id":"mekanismgeneticengineering:flight_gene"
+  }
+}

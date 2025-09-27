@@ -1,0 +1,18 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:cow_dna"
+  },
+  "first_output":
+  {
+    "amount":100,
+    "id":"mekanismgeneticengineering:general_environmental_compatibility_gene"
+  },
+  "second_output":
+  {
+    "amount":100,
+    "id":"mekanismgeneticengineering:milk_production_gene"
+  }
+}

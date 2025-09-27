@@ -1,0 +1,18 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:sniffer_dna"
+  },
+  "first_output":
+  {
+    "amount":140,
+    "id":"mekanismgeneticengineering:smell_gene"
+  },
+  "second_output":
+  {
+    "amount":140,
+    "id":"mekanismgeneticengineering:oviparous_gene"
+  }
+}

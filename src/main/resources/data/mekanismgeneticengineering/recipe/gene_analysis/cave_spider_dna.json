@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:cave_spider_dna"
+  },
+  "first_output":
+  {
+    "amount":120,
+    "id":"mekanismgeneticengineering:bug_gene"
+  },
+  "second_output":
+  {
+    "amount":120,
+    "id":"mekanismgeneticengineering:night_vision_gene"
+  },
+  "third_output":
+  {
+    "amount":120,
+    "id":"mekanismgeneticengineering:using_effect_gene"
+  }
+}

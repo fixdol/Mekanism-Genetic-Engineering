@@ -1,0 +1,18 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:cat_dna"
+  },
+  "first_output":
+  {
+    "amount":100,
+    "id":"mekanismgeneticengineering:colorful_gene"
+  },
+  "second_output":
+  {
+    "amount":100,
+    "id":"mekanismgeneticengineering:hearing_gene"
+  }
+}

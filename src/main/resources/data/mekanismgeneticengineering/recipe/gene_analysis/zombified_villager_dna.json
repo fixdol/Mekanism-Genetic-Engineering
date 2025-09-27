@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:zombified_villager_dna"
+  },
+  "first_output":
+  {
+    "amount":200,
+    "id":"mekanismgeneticengineering:undead_gene"
+  },
+  "second_output":
+  {
+    "amount":200,
+    "id":"mekanismgeneticengineering:soft_body_gene"
+  },
+  "third_output":
+  {
+    "amount":200,
+    "id":"mekanismgeneticengineering:intelligence_gene"
+  }
+}

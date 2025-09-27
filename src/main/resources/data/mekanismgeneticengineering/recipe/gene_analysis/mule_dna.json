@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:mule_dna"
+  },
+  "first_output":
+  {
+    "amount":200,
+    "id":"mekanismgeneticengineering:general_environmental_compatibility_gene"
+  },
+  "second_output":
+  {
+    "amount":200,
+    "id":"mekanismgeneticengineering:speed_gene"
+  },
+  "third_output":
+  {
+    "amount":200,
+    "id":"mekanismgeneticengineering:transportation_gene"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:armadillo_dna"
+  },
+  "first_output":
+  {
+    "amount":120,
+    "id":"mekanismgeneticengineering:hot_resistance_gene"
+  },
+  "second_output":
+  {
+    "amount":120,
+    "id":"mekanismgeneticengineering:hardness_gene"
+  }
+}

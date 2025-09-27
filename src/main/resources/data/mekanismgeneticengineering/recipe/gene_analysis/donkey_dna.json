@@ -1,0 +1,18 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:donkey_dna"
+  },
+  "first_output":
+  {
+    "amount":150,
+    "id":"mekanismgeneticengineering:general_environmental_compatibility_gene"
+  },
+  "second_output":
+  {
+    "amount":150,
+    "id":"mekanismgeneticengineering:transportation_gene"
+  }
+}

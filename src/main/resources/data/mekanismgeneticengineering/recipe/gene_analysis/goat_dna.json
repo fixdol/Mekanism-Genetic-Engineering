@@ -8,11 +8,11 @@
   "first_output":
   {
     "amount":100,
-    "id":"mekanismgeneticengineering:cold_resistance_gene"
+    "id":"mekanismgeneticengineering:jumping_gene"
   },
   "second_output":
   {
     "amount":100,
-    "id":"mekanismgeneticengineering:jumping_gene"
+    "id":"mekanismgeneticengineering:milk_production_gene"
   }
 }

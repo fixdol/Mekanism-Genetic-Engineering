@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:bat_dna"
+  },
+  "first_output":
+  {
+    "amount":60,
+    "id":"mekanismgeneticengineering:night_vision_gene"
+  },
+  "second_output":
+  {
+    "amount":60,
+    "id":"mekanismgeneticengineering:hearing_gene"
+  },
+  "third_output":
+  {
+    "amount":60,
+    "id":"mekanismgeneticengineering:flight_gene"
+  }
+}

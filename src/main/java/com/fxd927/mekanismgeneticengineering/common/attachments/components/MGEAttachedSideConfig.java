@@ -36,6 +36,14 @@ public record MGEAttachedSideConfig(Map<TransmissionType, AttachedSideConfig.Lig
         return new AttachedSideConfig(configInfo);
     });
 
+    public static final AttachedSideConfig PROJECTING = Util.make(() -> {
+        Map<TransmissionType, AttachedSideConfig.LightConfigInfo> configInfo = new EnumMap<>(TransmissionType.class);
+        configInfo.put(TransmissionType.ITEM, AttachedSideConfig.LightConfigInfo.OUT_EJECT);
+        configInfo.put(TransmissionType.CHEMICAL, LightConfigInfo.TWO_INPUT_ONE_OUTPUT);
+        configInfo.put(TransmissionType.ENERGY, AttachedSideConfig.LightConfigInfo.INPUT_ONLY);
+        return new AttachedSideConfig(configInfo);
+    });
+
     public record LightConfigInfo(Map<RelativeSide, DataType> sideConfig,
                                   boolean isEjecting) implements IPersistentConfigInfo {
         public static final AttachedSideConfig.LightConfigInfo ONE_INPUT_THREE_OUTPUT = Util.make(() -> {

@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:ender_dragon_dna"
+  },
+  "first_output":
+  {
+    "amount":2000,
+    "id":"mekanismgeneticengineering:flight_gene"
+  },
+  "second_output":
+  {
+    "amount":2000,
+    "id":"mekanismgeneticengineering:using_effect_gene"
+  },
+  "third_output":
+  {
+    "amount":2000,
+    "id":"mekanismgeneticengineering:spatial_awareness_gene"
+  }
+}

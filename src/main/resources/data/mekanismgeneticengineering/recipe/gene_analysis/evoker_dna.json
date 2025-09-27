@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:evoker_dna"
+  },
+  "first_output":
+  {
+    "amount":240,
+    "id":"mekanismgeneticengineering:intelligence_gene"
+  },
+  "second_output":
+  {
+    "amount":240,
+    "id":"mekanismgeneticengineering:evilness_gene"
+  },
+  "third_output":
+  {
+    "amount":240,
+    "id":"mekanismgeneticengineering:spatial_awareness_gene"
+  }
+}

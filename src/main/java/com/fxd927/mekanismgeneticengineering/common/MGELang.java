@@ -7,7 +7,9 @@ public enum MGELang implements ILangEntry {
 
     MEKANISM_GENETIC_ENGINEERING("constants","mod_name"),
     DESCRIPTION_NUCLEAR_ACID_CENTRIFUGE("description","nuclear_acid_centrifuge"),
-    DESCRIPTION_GENE_ANALYSIS("description","gene_analysis"),;
+    DESCRIPTION_GENE_ANALYSIS("description","gene_analysis"),
+    DESCRIPTION_TRAIT_DECODING_PROJECTOR("description","trait_decoding_projector");
+
 
     private final String key;
 

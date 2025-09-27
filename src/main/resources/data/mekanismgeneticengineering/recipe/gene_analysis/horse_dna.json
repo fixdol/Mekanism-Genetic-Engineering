@@ -1,0 +1,15 @@
+{
+  "type": "mekanismgeneticengineering:gene_analysis",
+  "input": {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:horse_dna"
+  },
+  "first_output": {
+    "amount": 200,
+    "id": "mekanismgeneticengineering:general_environmental_compatibility_gene"
+  },
+  "second_output": {
+    "amount": 200,
+    "id": "mekanismgeneticengineering:speed_gene"
+  }
+}

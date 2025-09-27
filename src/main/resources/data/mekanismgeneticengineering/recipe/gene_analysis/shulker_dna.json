@@ -1,0 +1,18 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:shulker_dna"
+  },
+  "first_output":
+  {
+    "amount":300,
+    "id":"mekanismgeneticengineering:hardness_gene"
+  },
+  "second_output":
+  {
+    "amount":300,
+    "id":"mekanismgeneticengineering:multiplication_gene"
+  }
+}

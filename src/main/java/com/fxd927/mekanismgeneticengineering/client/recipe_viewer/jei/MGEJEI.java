@@ -11,6 +11,7 @@ import mekanism.client.recipe_viewer.jei.CatalystRegistryHelper;
 import mekanism.client.recipe_viewer.jei.JeiGhostIngredientHandler;
 import mekanism.client.recipe_viewer.jei.JeiGuiElementHandler;
 import mekanism.client.recipe_viewer.jei.MekanismSubtypeInterpreter;
+import mekanism.client.recipe_viewer.jei.machine.ChemicalChemicalToChemicalRecipeCategory;
 import mekanism.client.recipe_viewer.type.IRecipeViewerRecipeType;
 import mekanism.common.capabilities.Capabilities;
 import mezz.jei.api.IModPlugin;
@@ -92,6 +93,7 @@ public class MGEJEI implements IModPlugin {
 
         registry.addRecipeCategories(new ItemChemicalChemicalToChemicalRecipeCategory(guiHelper, MGERecipeViewerRecipeType.NUCLEAR_ACID_CENTRIFUGE));
         registry.addRecipeCategories(new ChemicalToTriChemicalRecipeCategory(guiHelper, MGERecipeViewerRecipeType.GENE_ANALYSIS));
+        registry.addRecipeCategories(new ChemicalChemicalToChemicalRecipeCategory(guiHelper, MGERecipeViewerRecipeType.PROJECTING));
     }
 
     @Override
@@ -106,6 +108,7 @@ public class MGEJEI implements IModPlugin {
     public void registerRecipeCatalysts(@Nonnull IRecipeCatalystRegistration registry) {
         CatalystRegistryHelper.register(registry, MGERecipeViewerRecipeType.NUCLEAR_ACID_CENTRIFUGE);
         CatalystRegistryHelper.register(registry, MGERecipeViewerRecipeType.GENE_ANALYSIS);
+        CatalystRegistryHelper.register(registry, MGERecipeViewerRecipeType.PROJECTING);
     }
 
     @Override
@@ -116,5 +119,6 @@ public class MGEJEI implements IModPlugin {
 
         MGERecipeRegistryHelper.register(registry, MGERecipeViewerRecipeType.NUCLEAR_ACID_CENTRIFUGE, MGERecipeType.NUCLEAR_ACID_CENTRIFUGE);
         MGERecipeRegistryHelper.register(registry, MGERecipeViewerRecipeType.GENE_ANALYSIS, MGERecipeType.GENE_ANALYSIS);
+        MGERecipeRegistryHelper.register(registry, MGERecipeViewerRecipeType.PROJECTING, MGERecipeType.PROJECTING);
     }
 }

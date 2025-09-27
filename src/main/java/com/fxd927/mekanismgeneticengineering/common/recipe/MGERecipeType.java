@@ -8,10 +8,15 @@ import com.fxd927.mekanismgeneticengineering.common.MekanismGeneticEngineering;
 import com.fxd927.mekanismgeneticengineering.common.recipe.lookup.cache.MGEInputRecipeCache;
 import com.fxd927.mekanismgeneticengineering.common.registration.MGERecipeTypeDeferredRegister;
 import com.fxd927.mekanismgeneticengineering.common.registration.MGERecipeTypeRegistryObject;
+import mekanism.api.recipes.ChemicalChemicalToChemicalRecipe;
 import mekanism.api.recipes.MekanismRecipe;
+import mekanism.api.recipes.MekanismRecipeTypes;
+import mekanism.api.recipes.vanilla_input.BiChemicalRecipeInput;
 import mekanism.api.recipes.vanilla_input.SingleChemicalRecipeInput;
 import mekanism.client.MekanismClient;
 import mekanism.common.recipe.lookup.cache.IInputRecipeCache;
+import mekanism.common.recipe.lookup.cache.InputRecipeCache;
+import mekanism.common.registration.impl.RecipeTypeRegistryObject;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.*;
@@ -35,6 +40,9 @@ public class MGERecipeType <VANILLA_INPUT extends RecipeInput, RECIPE extends Me
 
     public static final MGERecipeTypeRegistryObject<SingleChemicalRecipeInput, ChemicalToTripleChemicalRecipe, MGEInputRecipeCache.SingleChemical<ChemicalToTripleChemicalRecipe>> GENE_ANALYSIS =
             register(MGERecipeTypes.NAME_GENE_ANALYSIS, recipeType -> new MGEInputRecipeCache.SingleChemical<>(recipeType, ChemicalToTripleChemicalRecipe::getInput));
+
+    public static final MGERecipeTypeRegistryObject<BiChemicalRecipeInput, ChemicalChemicalToChemicalRecipe, MGEInputRecipeCache.EitherSideChemical<ChemicalChemicalToChemicalRecipe>> PROJECTING =
+            register(MGERecipeTypes.NAME_PROJECTING, MGEInputRecipeCache.EitherSideChemical::new);
 
 
     private static <VANILLA_INPUT extends RecipeInput, RECIPE extends MekanismRecipe<VANILLA_INPUT>, INPUT_CACHE extends IInputRecipeCache>

@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:glow_squid_dna"
+  },
+  "first_output":
+  {
+    "amount":100,
+    "id":"mekanismgeneticengineering:underwater_adaptation_gene"
+  },
+  "second_output":
+  {
+    "amount":100,
+    "id":"mekanismgeneticengineering:soft_body_gene"
+  },
+  "third_output":
+  {
+    "amount":100,
+    "id":"mekanismgeneticengineering:night_vision_gene"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:axolotl_dna"
+  },
+  "first_output":
+  {
+    "amount":140,
+    "id":"mekanismgeneticengineering:underwater_adaptation_gene"
+  },
+  "second_output":
+  {
+    "amount":140,
+    "id":"mekanismgeneticengineering:colorful_gene"
+  },
+  "third_output":
+  {
+    "amount":140,
+    "id":"mekanismgeneticengineering:soft_body_gene"
+  }
+}

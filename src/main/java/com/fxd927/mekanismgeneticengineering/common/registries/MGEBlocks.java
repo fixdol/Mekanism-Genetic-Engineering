@@ -11,6 +11,7 @@ import com.fxd927.mekanismgeneticengineering.common.recipe.lookup.cache.MGEInput
 import com.fxd927.mekanismgeneticengineering.common.recipe.lookup.cache.MGETripleInputRecipeCache;
 import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityGeneAnalyzer;
 import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityNuclearAcidCentrifuge;
+import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityTraitDecodingProjector;
 import mekanism.common.attachments.component.AttachedEjector;
 import mekanism.common.attachments.component.AttachedSideConfig;
 import mekanism.common.attachments.containers.ContainerType;
@@ -72,6 +73,29 @@ public class MGEBlocks {
                             .addBasic(TileEntityGeneAnalyzer.MAX_CHEMICAL)
                             .addBasic(TileEntityGeneAnalyzer.MAX_CHEMICAL)
                             .addBasic(TileEntityGeneAnalyzer.MAX_CHEMICAL)
+                            .build()
+                    ).addAttachmentOnlyContainers(ContainerType.ITEM, () -> MGEItemSlotsBuilder.builder()
+                            .addChemicalFillSlot(0)
+                            .addChemicalFillSlot(1)
+                            .addChemicalFillSlot(2)
+                            .addChemicalDrainSlot(3)
+                            .addEnergy()
+                            .build()
+                    )
+            );
+
+    public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityTraitDecodingProjector, MGEMachine<TileEntityTraitDecodingProjector>>, ItemBlockTooltip<BlockTile.BlockTileModel<TileEntityTraitDecodingProjector, MGEMachine<TileEntityTraitDecodingProjector>>>> TRAIT_DECODING_PROJECTOR =
+            BLOCKS.register("trait_decoding_projector", () -> new BlockTile.BlockTileModel<>(MGEBlockTypes.TRAIT_DECODING_PROJECTOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),
+                    (block, properties) -> new ItemBlockTooltip<>(block, true, properties
+                            .component(MekanismDataComponents.EJECTOR, AttachedEjector.DEFAULT)
+                            .component(MekanismDataComponents.SIDE_CONFIG, MGEAttachedSideConfig.PROJECTING)
+                    )
+            ).forItemHolder(holder -> holder
+                    .addAttachmentOnlyContainers(ContainerType.CHEMICAL, () -> MGEChemicalTanksBuilder.builder()
+                            .addBasic(TileEntityTraitDecodingProjector.MAX_CHEMICAL, MGERecipeType.PROJECTING, MGEInputRecipeCache.EitherSideChemical::containsInput)
+                            .addBasic(TileEntityTraitDecodingProjector.MAX_CHEMICAL)
+                            .addBasic(TileEntityTraitDecodingProjector.MAX_CHEMICAL)
+                            .addBasic(TileEntityTraitDecodingProjector.MAX_CHEMICAL)
                             .build()
                     ).addAttachmentOnlyContainers(ContainerType.ITEM, () -> MGEItemSlotsBuilder.builder()
                             .addChemicalFillSlot(0)

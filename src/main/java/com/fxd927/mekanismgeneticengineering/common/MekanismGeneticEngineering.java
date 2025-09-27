@@ -24,6 +24,8 @@ public class MekanismGeneticEngineering
         MGEBlocks.BLOCKS.register(modEventBus);
         MGEChemicals.CHEMICALS.register(modEventBus);
         MGEContainerTypes.CONTAINER_TYPES.register(modEventBus);
+        MGEFluids.FLUIDS.register(modEventBus);
+        MGECreativeTabs.CREATIVE_TABS.register(modEventBus);
         MGEItems.ITEMS.register(modEventBus);
         MGERecipeSerializerInternal.RECIPE_SERIALIZERS.register(modEventBus);
         MGERecipeType.RECIPE_TYPES.register(modEventBus);

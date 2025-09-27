@@ -1,0 +1,23 @@
+{
+  "type":"mekanismgeneticengineering:gene_analysis",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:turtle_dna"
+  },
+  "first_output":
+  {
+    "amount":300,
+    "id":"mekanismgeneticengineering:underwater_adaptation_gene"
+  },
+  "second_output":
+  {
+    "amount":300,
+    "id":"mekanismgeneticengineering:hardness_gene"
+  },
+  "third_output":
+  {
+    "amount":300,
+    "id":"mekanismgeneticengineering:oviparous_gene"
+  }
+}
