@@ -36,6 +36,8 @@ public class GuiTraitDecodingProjector extends GuiConfigurableTile<TileEntityTra
                 .warning(WarningTracker.WarningType.NO_MATCHING_RECIPE, tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_LEFT_INPUT));
         addRenderableWidget(new GuiChemicalGauge(() -> tile.secondTank, () -> tile.getChemicalTanks(null), GaugeType.STANDARD, this, 28, 15))
                 .warning(WarningTracker.WarningType.NO_MATCHING_RECIPE, tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_RIGHT_INPUT));
+        addRenderableWidget(new GuiChemicalGauge(() -> tile.thirdTank, () -> tile.getChemicalTanks(null), GaugeType.STANDARD, this, 51, 15))
+                .warning(WarningTracker.WarningType.NO_MATCHING_RECIPE, tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_LEFT_INPUT));
         addRenderableWidget(new GuiChemicalGauge(() -> tile.outputTank, () -> tile.getChemicalTanks(null), GaugeType.STANDARD, this, 133, 13))
                 .warning(WarningTracker.WarningType.NO_SPACE_IN_OUTPUT, tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_OUTPUT_SPACE));
         addRenderableWidget(new MGEGuiProgress(tile::getScaledProgress, ProgressType.LARGE_RIGHT, this, 77, 43).recipeViewerCategory(tile))

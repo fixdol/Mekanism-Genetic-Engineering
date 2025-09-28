@@ -3,7 +3,7 @@
   "input":
   {
     "amount": 100,
-    "chemical": "mekanismgeneticengineering:zombified_villager_dna"
+    "chemical": "mekanismgeneticengineering:zombie_villager_dna"
   },
   "first_output":
   {
@@ -18,6 +18,6 @@
   "third_output":
   {
     "amount":200,
-    "id":"mekanismgeneticengineering:intelligence_gene"
+    "id":"mekanismgeneticengineering:general_environmental_compatibility_gene"
   }
 }

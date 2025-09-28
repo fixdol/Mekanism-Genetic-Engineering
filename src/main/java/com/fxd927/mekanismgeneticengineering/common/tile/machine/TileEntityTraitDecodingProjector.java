@@ -1,9 +1,13 @@
 package com.fxd927.mekanismgeneticengineering.common.tile.machine;
 
+import com.fxd927.mekanismgeneticengineering.api.recipes.TriChemicalToChemicalRecipe;
+import com.fxd927.mekanismgeneticengineering.api.recipes.cache.TripleChemicalToChemicalCachedRecipe;
+import com.fxd927.mekanismgeneticengineering.api.recipes.vanilla_input.TriChemicalRecipeInput;
 import com.fxd927.mekanismgeneticengineering.client.recipe_viewer.type.MGERecipeViewerRecipeType;
 import com.fxd927.mekanismgeneticengineering.common.recipe.IMGERecipeTypeProvider;
 import com.fxd927.mekanismgeneticengineering.common.recipe.MGERecipeType;
 import com.fxd927.mekanismgeneticengineering.common.recipe.lookup.IMGEEitherSideRecipeLookupHandler;
+import com.fxd927.mekanismgeneticengineering.common.recipe.lookup.IMGETripleRecipeLookupHandler;
 import com.fxd927.mekanismgeneticengineering.common.recipe.lookup.cache.MGEInputRecipeCache;
 import com.fxd927.mekanismgeneticengineering.common.registries.MGEBlocks;
 import com.fxd927.mekanismgeneticengineering.common.tile.prefab.MGETileEntityProgressMachine;
@@ -60,8 +64,8 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class TileEntityTraitDecodingProjector extends MGETileEntityProgressMachine<ChemicalChemicalToChemicalRecipe> implements
-        IMGEEitherSideRecipeLookupHandler.EitherSideChemicalRecipeLookupHandler<ChemicalChemicalToChemicalRecipe> {
+public class TileEntityTraitDecodingProjector extends MGETileEntityProgressMachine<TriChemicalToChemicalRecipe> implements
+        IMGETripleRecipeLookupHandler.TriChemicalRecipeLookupHandler<TriChemicalToChemicalRecipe> {
     private static final List<CachedRecipe.OperationTracker.RecipeError> TRACKED_ERROR_TYPES = List.of(
             CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_ENERGY,
             CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_ENERGY_REDUCED_RATE,
@@ -79,6 +83,9 @@ public class TileEntityTraitDecodingProjector extends MGETileEntityProgressMachi
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerChemicalTankWrapper.class, methodNames = {"getRightInput", "getRightInputCapacity", "getRightInputNeeded",
             "getRightInputFilledPercentage"}, docPlaceholder = "right input tank")
     public IChemicalTank secondTank;
+    @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerChemicalTankWrapper.class, methodNames = {"getRightInput", "getRightInputCapacity", "getRightInputNeeded",
+            "getRightInputFilledPercentage"}, docPlaceholder = "right input tank")
+    public IChemicalTank thirdTank;
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerChemicalTankWrapper.class, methodNames = {"getOutput", "getOutputCapacity", "getOutputNeeded",
             "getOutputFilledPercentage"}, docPlaceholder = "output (center) tank")
     public IChemicalTank outputTank;
@@ -88,10 +95,17 @@ public class TileEntityTraitDecodingProjector extends MGETileEntityProgressMachi
     private int baselineMaxOperations = 1;
 
     private final IOutputHandler<@NotNull ChemicalStack> outputHandler;
-    private final IInputHandler<@NotNull ChemicalStack> leftInputHandler;
-    private final IInputHandler<@NotNull ChemicalStack> rightInputHandler;
+    private final IInputHandler<@NotNull ChemicalStack> firstInputHandler;
+    private final IInputHandler<@NotNull ChemicalStack> secondInputHandler;
+    private final IInputHandler<@NotNull ChemicalStack> thirdInputHandler;
 
     private MachineEnergyContainer<TileEntityTraitDecodingProjector> energyContainer;
+    @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerIInventorySlotWrapper.class, methodNames = "getOutputItem", docPlaceholder = "output item slot")
+    ChemicalInventorySlot firstInputSlot;
+    @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerIInventorySlotWrapper.class, methodNames = "getOutputItem", docPlaceholder = "output item slot")
+    ChemicalInventorySlot secondInputSlot;
+    @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerIInventorySlotWrapper.class, methodNames = "getOutputItem", docPlaceholder = "output item slot")
+    ChemicalInventorySlot thirdInputSlot;
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerIInventorySlotWrapper.class, methodNames = "getOutputItem", docPlaceholder = "output item slot")
     ChemicalInventorySlot outputSlot;
     @WrappingComputerMethod(wrapper = SpecialComputerMethodWrapper.ComputerIInventorySlotWrapper.class, methodNames = "getEnergyItem", docPlaceholder = "energy slot")
@@ -102,6 +116,9 @@ public class TileEntityTraitDecodingProjector extends MGETileEntityProgressMachi
 
         ConfigInfo itemConfig = configComponent.getConfig(TransmissionType.ITEM);
         if (itemConfig != null) {
+            itemConfig.addSlotInfo(DataType.INPUT_1, new InventorySlotInfo(true, true, firstInputSlot));
+            itemConfig.addSlotInfo(DataType.INPUT_2, new InventorySlotInfo(true, true, secondInputSlot));
+            itemConfig.addSlotInfo(DataType.INPUT, new InventorySlotInfo(true, true, thirdInputSlot));
             itemConfig.addSlotInfo(DataType.OUTPUT, new InventorySlotInfo(true, true, outputSlot));
 
             itemConfig.addSlotInfo(DataType.ENERGY, new InventorySlotInfo(true, true, energySlot));
@@ -111,8 +128,9 @@ public class TileEntityTraitDecodingProjector extends MGETileEntityProgressMachi
         if (gasConfig != null) {
             gasConfig.addSlotInfo(DataType.INPUT_1, new ChemicalSlotInfo(true, false, firstTank));
             gasConfig.addSlotInfo(DataType.INPUT_2, new ChemicalSlotInfo(true, false, secondTank));
+            gasConfig.addSlotInfo(DataType.INPUT, new ChemicalSlotInfo(true, false, thirdTank));
             gasConfig.addSlotInfo(DataType.OUTPUT, new ChemicalSlotInfo(false, true, outputTank));
-            gasConfig.addSlotInfo(DataType.INPUT_OUTPUT, new ChemicalSlotInfo(true, true, firstTank, secondTank, outputTank));
+            gasConfig.addSlotInfo(DataType.INPUT_OUTPUT, new ChemicalSlotInfo(true, true, firstTank, secondTank, thirdTank, outputTank));
         }
 
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
@@ -121,8 +139,9 @@ public class TileEntityTraitDecodingProjector extends MGETileEntityProgressMachi
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM, TransmissionType.CHEMICAL)
                 .setCanTankEject(tank -> tank == outputTank);
 
-        leftInputHandler = InputHelper.getInputHandler(firstTank, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_LEFT_INPUT);
-        rightInputHandler = InputHelper.getInputHandler(secondTank, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_RIGHT_INPUT);
+        firstInputHandler = InputHelper.getInputHandler(firstTank, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_INPUT);
+        secondInputHandler = InputHelper.getInputHandler(secondTank, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_INPUT);
+        thirdInputHandler = InputHelper.getInputHandler(thirdTank, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_INPUT);
         outputHandler = OutputHelper.getOutputHandler(outputTank, CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_OUTPUT_SPACE);
     }
 
@@ -130,8 +149,9 @@ public class TileEntityTraitDecodingProjector extends MGETileEntityProgressMachi
     @Override
     public IChemicalTankHolder getInitialChemicalTanks(IContentsListener listener, IContentsListener recipeCacheListener, IContentsListener recipeCacheUnpauseListener) {
         ChemicalTankHelper builder = ChemicalTankHelper.forSideWithConfig(this);
-        builder.addTank(firstTank = BasicChemicalTank.inputModern(MAX_CHEMICAL, gas -> containsRecipe(gas, secondTank.getStack()), this::containsRecipe, recipeCacheListener));
-        builder.addTank(secondTank = BasicChemicalTank.inputModern(MAX_CHEMICAL, gas -> containsRecipe(gas, firstTank.getStack()), this::containsRecipe, recipeCacheListener));
+        builder.addTank(firstTank = BasicChemicalTank.inputModern(MAX_CHEMICAL, gas -> containsRecipeABC(gas, secondTank.getStack(), thirdTank.getStack()), this::containsRecipeA, recipeCacheListener));
+        builder.addTank(secondTank = BasicChemicalTank.inputModern(MAX_CHEMICAL, gas -> containsRecipeBAC(gas, firstTank.getStack(), thirdTank.getStack()), this::containsRecipeB, recipeCacheListener));
+        builder.addTank(thirdTank = BasicChemicalTank.inputModern(MAX_CHEMICAL, gas -> containsRecipeCAB(gas, firstTank.getStack(), secondTank.getStack()), this::containsRecipeC, recipeCacheListener));
         builder.addTank(outputTank = BasicChemicalTank.output(MAX_CHEMICAL, recipeCacheUnpauseListener));
         return builder.build();
     }
@@ -148,6 +168,9 @@ public class TileEntityTraitDecodingProjector extends MGETileEntityProgressMachi
     @Override
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener, IContentsListener recipeCacheListener, IContentsListener recipeCacheUnpauseListener) {
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this);
+        builder.addSlot(firstInputSlot = ChemicalInventorySlot.fill(firstTank, listener, 8, 65));
+        builder.addSlot(secondInputSlot = ChemicalInventorySlot.fill(secondTank, listener, 25, 65));
+        builder.addSlot(thirdInputSlot = ChemicalInventorySlot.fill(thirdTank, listener, 52, 65));
         builder.addSlot(outputSlot = ChemicalInventorySlot.drain(outputTank, listener, 80, 65));
         builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 154, 14));
         outputSlot.setSlotType(ContainerSlotType.OUTPUT);
@@ -159,6 +182,9 @@ public class TileEntityTraitDecodingProjector extends MGETileEntityProgressMachi
     protected boolean onUpdateServer() {
         boolean sendUpdatePacket = super.onUpdateServer();
         energySlot.fillContainerOrConvert();
+        firstInputSlot.fillTank();
+        secondInputSlot.fillTank();
+        thirdInputSlot.fillTank();
         outputSlot.drainTank();
         clientEnergyUsed = recipeCacheLookupMonitor.updateAndProcess(energyContainer);
         return sendUpdatePacket;
@@ -171,25 +197,25 @@ public class TileEntityTraitDecodingProjector extends MGETileEntityProgressMachi
 
     @NotNull
     @Override
-    public IMGERecipeTypeProvider<BiChemicalRecipeInput, ChemicalChemicalToChemicalRecipe, MGEInputRecipeCache.EitherSideChemical<ChemicalChemicalToChemicalRecipe>> getRecipeType() {
+    public IMGERecipeTypeProvider<TriChemicalRecipeInput, TriChemicalToChemicalRecipe, MGEInputRecipeCache.TriChemical<TriChemicalToChemicalRecipe>> getRecipeType() {
         return MGERecipeType.PROJECTING;
     }
 
     @Override
-    public IRecipeViewerRecipeType<ChemicalChemicalToChemicalRecipe> recipeViewerType() {
+    public IRecipeViewerRecipeType<TriChemicalToChemicalRecipe> recipeViewerType() {
         return MGERecipeViewerRecipeType.PROJECTING;
     }
 
     @Nullable
     @Override
-    public ChemicalChemicalToChemicalRecipe getRecipe(int cacheIndex) {
-        return findFirstRecipe(leftInputHandler, rightInputHandler);
+    public TriChemicalToChemicalRecipe getRecipe(int cacheIndex) {
+        return findFirstRecipe(firstInputHandler, secondInputHandler, thirdInputHandler);
     }
 
     @NotNull
     @Override
-    public CachedRecipe<ChemicalChemicalToChemicalRecipe> createNewCachedRecipe(@NotNull ChemicalChemicalToChemicalRecipe recipe, int cacheIndex) {
-        return new ChemicalChemicalToChemicalCachedRecipe<>(recipe, recheckAllRecipeErrors, leftInputHandler, rightInputHandler, outputHandler)
+    public CachedRecipe<TriChemicalToChemicalRecipe> createNewCachedRecipe(@NotNull TriChemicalToChemicalRecipe recipe, int cacheIndex) {
+        return new TripleChemicalToChemicalCachedRecipe(recipe, recheckAllRecipeErrors, firstInputHandler, secondInputHandler, thirdInputHandler, outputHandler)
                 .setErrorsChanged(this::onErrorsChanged)
                 .setCanHolderFunction(this::canFunction)
                 .setActive(this::setActive)

@@ -3,7 +3,9 @@ package com.fxd927.mekanismgeneticengineering.common.recipe;
 import com.fxd927.mekanismgeneticengineering.api.recipes.ChemicalToTripleChemicalRecipe;
 import com.fxd927.mekanismgeneticengineering.api.recipes.ItemChemicalChemicalToChemicalRecipe;
 import com.fxd927.mekanismgeneticengineering.api.recipes.MGERecipeTypes;
+import com.fxd927.mekanismgeneticengineering.api.recipes.TriChemicalToChemicalRecipe;
 import com.fxd927.mekanismgeneticengineering.api.recipes.vanilla_input.SingleItemBiChemicalRecipeInput;
+import com.fxd927.mekanismgeneticengineering.api.recipes.vanilla_input.TriChemicalRecipeInput;
 import com.fxd927.mekanismgeneticengineering.common.MekanismGeneticEngineering;
 import com.fxd927.mekanismgeneticengineering.common.recipe.lookup.cache.MGEInputRecipeCache;
 import com.fxd927.mekanismgeneticengineering.common.registration.MGERecipeTypeDeferredRegister;
@@ -41,8 +43,8 @@ public class MGERecipeType <VANILLA_INPUT extends RecipeInput, RECIPE extends Me
     public static final MGERecipeTypeRegistryObject<SingleChemicalRecipeInput, ChemicalToTripleChemicalRecipe, MGEInputRecipeCache.SingleChemical<ChemicalToTripleChemicalRecipe>> GENE_ANALYSIS =
             register(MGERecipeTypes.NAME_GENE_ANALYSIS, recipeType -> new MGEInputRecipeCache.SingleChemical<>(recipeType, ChemicalToTripleChemicalRecipe::getInput));
 
-    public static final MGERecipeTypeRegistryObject<BiChemicalRecipeInput, ChemicalChemicalToChemicalRecipe, MGEInputRecipeCache.EitherSideChemical<ChemicalChemicalToChemicalRecipe>> PROJECTING =
-            register(MGERecipeTypes.NAME_PROJECTING, MGEInputRecipeCache.EitherSideChemical::new);
+    public static final MGERecipeTypeRegistryObject<TriChemicalRecipeInput, TriChemicalToChemicalRecipe, MGEInputRecipeCache.TriChemical<TriChemicalToChemicalRecipe>> PROJECTING =
+            register(MGERecipeTypes.NAME_PROJECTING, recipeType -> new MGEInputRecipeCache.TriChemical<>(recipeType, TriChemicalToChemicalRecipe::getFirstInput, TriChemicalToChemicalRecipe::getSecondInput, TriChemicalToChemicalRecipe::getThirdInput));
 
 
     private static <VANILLA_INPUT extends RecipeInput, RECIPE extends MekanismRecipe<VANILLA_INPUT>, INPUT_CACHE extends IInputRecipeCache>

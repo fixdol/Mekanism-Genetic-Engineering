@@ -92,9 +92,9 @@ public class MGEBlocks {
                     )
             ).forItemHolder(holder -> holder
                     .addAttachmentOnlyContainers(ContainerType.CHEMICAL, () -> MGEChemicalTanksBuilder.builder()
-                            .addBasic(TileEntityTraitDecodingProjector.MAX_CHEMICAL, MGERecipeType.PROJECTING, MGEInputRecipeCache.EitherSideChemical::containsInput)
-                            .addBasic(TileEntityTraitDecodingProjector.MAX_CHEMICAL)
-                            .addBasic(TileEntityTraitDecodingProjector.MAX_CHEMICAL)
+                            .addBasic(TileEntityTraitDecodingProjector.MAX_CHEMICAL, MGERecipeType.PROJECTING, MGEInputRecipeCache.TriChemical::containsInputA)
+                            .addBasic(TileEntityTraitDecodingProjector.MAX_CHEMICAL, MGERecipeType.PROJECTING, MGEInputRecipeCache.TriChemical::containsInputB)
+                            .addBasic(TileEntityTraitDecodingProjector.MAX_CHEMICAL, MGERecipeType.PROJECTING, MGEInputRecipeCache.TriChemical::containsInputC)
                             .addBasic(TileEntityTraitDecodingProjector.MAX_CHEMICAL)
                             .build()
                     ).addAttachmentOnlyContainers(ContainerType.ITEM, () -> MGEItemSlotsBuilder.builder()

@@ -21,8 +21,13 @@ public abstract class TriChemicalToChemicalRecipe extends MekanismRecipe<TriChem
 
     @Override
     public boolean matches(TriChemicalRecipeInput input, Level level) {
-        //Don't match incomplete recipes or ones that don't match
-        return !isIncomplete() && test(input.firstChemical(), input.secondChemical(), input.thirdChemical());
+        if (isIncomplete()) {
+            return false;
+        }
+        if (input.thirdChemical().isEmpty() || getThirdInput().ingredient().isEmpty()) {
+            return test(input.firstChemical(), input.secondChemical(), ChemicalStack.EMPTY);
+        }
+        return test(input.firstChemical(), input.secondChemical(), input.thirdChemical());
     }
 
     /**
@@ -61,8 +66,13 @@ public abstract class TriChemicalToChemicalRecipe extends MekanismRecipe<TriChem
 
     @Override
     public boolean isIncomplete() {
-        return getFirstInput().hasNoMatchingInstances() || getSecondInput().hasNoMatchingInstances() || getThirdInput().hasNoMatchingInstances();
+        if (getFirstInput().hasNoMatchingInstances() || getSecondInput().hasNoMatchingInstances()) {
+            return true;
+        }
+        // third が Empty の場合は incomplete にはしない
+        return !(getThirdInput().ingredient().isEmpty()) && getThirdInput().hasNoMatchingInstances();
     }
+
 
     @Override
     public void logMissingTags() {

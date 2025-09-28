@@ -3,6 +3,7 @@ package com.fxd927.mekanismgeneticengineering.common.recipe.serializer;
 import com.fxd927.mekanismgeneticengineering.api.MGESerializationConstants;
 import com.fxd927.mekanismgeneticengineering.api.recipes.ChemicalToTripleChemicalRecipe;
 import com.fxd927.mekanismgeneticengineering.api.recipes.ItemChemicalChemicalToChemicalRecipe;
+import com.fxd927.mekanismgeneticengineering.api.recipes.TriChemicalToChemicalRecipe;
 import com.fxd927.mekanismgeneticengineering.api.recipes.basic.IBasicTriChemicalOutput;
 import com.mojang.datafixers.util.Function3;
 import com.mojang.datafixers.util.Function4;
@@ -15,6 +16,7 @@ import mekanism.api.recipes.ChemicalChemicalToChemicalRecipe;
 import mekanism.api.recipes.basic.IBasicChemicalOutput;
 import mekanism.api.recipes.ingredients.ChemicalStackIngredient;
 import mekanism.api.recipes.ingredients.ItemStackIngredient;
+import mekanism.api.recipes.ingredients.chemical.EmptyChemicalIngredient;
 import mekanism.api.recipes.ingredients.creator.IIngredientCreator;
 import mekanism.common.recipe.serializer.MekanismRecipeSerializer;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -56,18 +58,23 @@ public record MGERecipeSerializer() {
         ));
     }
 
-    public static <RECIPE extends ChemicalChemicalToChemicalRecipe & IBasicChemicalOutput> MekanismRecipeSerializer<RECIPE>
-    chemicalChemicalToChemical(Function3<ChemicalStackIngredient, ChemicalStackIngredient, ChemicalStack, RECIPE> factory, IIngredientCreator<Chemical, ChemicalStack, ChemicalStackIngredient> ingredientCreator,
-                               MapCodec<ChemicalStack> stackCodec, StreamCodec<? super RegistryFriendlyByteBuf, ChemicalStack> stackStreamCodec) {
-        return new MekanismRecipeSerializer<>(RecordCodecBuilder.mapCodec(instance -> instance.group(
-                ingredientCreator.codec().fieldOf(MGESerializationConstants.FIRST_INPUT).forGetter(ChemicalChemicalToChemicalRecipe::getLeftInput),
-                ingredientCreator.codec().fieldOf(MGESerializationConstants.SECOND_INPUT).forGetter(ChemicalChemicalToChemicalRecipe::getRightInput),
-                stackCodec.fieldOf(SerializationConstants.OUTPUT).forGetter(IBasicChemicalOutput::getOutputRaw)
-        ).apply(instance, factory)), StreamCodec.composite(
-                ingredientCreator.streamCodec(), ChemicalChemicalToChemicalRecipe::getLeftInput,
-                ingredientCreator.streamCodec(), ChemicalChemicalToChemicalRecipe::getRightInput,
-                stackStreamCodec, IBasicChemicalOutput::getOutputRaw,
-                factory
-        ));
+    public static <RECIPE extends TriChemicalToChemicalRecipe & IBasicChemicalOutput> MekanismRecipeSerializer<RECIPE>
+    chemicalChemicalChemicalToChemical(Function4<ChemicalStackIngredient, ChemicalStackIngredient, ChemicalStackIngredient, ChemicalStack, RECIPE> factory, IIngredientCreator<Chemical, ChemicalStack, ChemicalStackIngredient> ingredientCreator, MapCodec<ChemicalStack> stackCodec, StreamCodec<? super RegistryFriendlyByteBuf, ChemicalStack> stackStreamCodec) {
+        return new MekanismRecipeSerializer<>(
+                RecordCodecBuilder.mapCodec(instance -> instance.group(
+                        ingredientCreator.codec().fieldOf(MGESerializationConstants.FIRST_INPUT).forGetter(TriChemicalToChemicalRecipe::getFirstInput),
+                        ingredientCreator.codec().fieldOf(MGESerializationConstants.SECOND_INPUT).forGetter(TriChemicalToChemicalRecipe::getSecondInput),
+                        ingredientCreator.codec().optionalFieldOf(MGESerializationConstants.THIRD_INPUT, new ChemicalStackIngredient(EmptyChemicalIngredient.INSTANCE, 1)
+                        ).forGetter(TriChemicalToChemicalRecipe::getThirdInput),
+                        stackCodec.fieldOf(SerializationConstants.OUTPUT).forGetter(IBasicChemicalOutput::getOutputRaw)
+                ).apply(instance, factory)),
+                StreamCodec.composite(
+                        ingredientCreator.streamCodec(), TriChemicalToChemicalRecipe::getFirstInput,
+                        ingredientCreator.streamCodec(), TriChemicalToChemicalRecipe::getSecondInput,
+                        ingredientCreator.streamCodec(), TriChemicalToChemicalRecipe::getThirdInput,
+                        stackStreamCodec, IBasicChemicalOutput::getOutputRaw,
+                        factory
+                )
+        );
     }
 }

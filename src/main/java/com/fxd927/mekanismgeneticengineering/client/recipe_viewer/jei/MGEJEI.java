@@ -2,6 +2,7 @@ package com.fxd927.mekanismgeneticengineering.client.recipe_viewer.jei;
 
 import com.fxd927.mekanismgeneticengineering.client.recipe_viewer.jei.machine.ChemicalToTriChemicalRecipeCategory;
 import com.fxd927.mekanismgeneticengineering.client.recipe_viewer.jei.machine.ItemChemicalChemicalToChemicalRecipeCategory;
+import com.fxd927.mekanismgeneticengineering.client.recipe_viewer.jei.machine.TriChemicalToChemicalRecipeCategory;
 import com.fxd927.mekanismgeneticengineering.client.recipe_viewer.type.MGERecipeViewerRecipeType;
 import com.fxd927.mekanismgeneticengineering.common.MekanismGeneticEngineering;
 import com.fxd927.mekanismgeneticengineering.common.recipe.MGERecipeType;
@@ -93,7 +94,7 @@ public class MGEJEI implements IModPlugin {
 
         registry.addRecipeCategories(new ItemChemicalChemicalToChemicalRecipeCategory(guiHelper, MGERecipeViewerRecipeType.NUCLEAR_ACID_CENTRIFUGE));
         registry.addRecipeCategories(new ChemicalToTriChemicalRecipeCategory(guiHelper, MGERecipeViewerRecipeType.GENE_ANALYSIS));
-        registry.addRecipeCategories(new ChemicalChemicalToChemicalRecipeCategory(guiHelper, MGERecipeViewerRecipeType.PROJECTING));
+        registry.addRecipeCategories(new TriChemicalToChemicalRecipeCategory(guiHelper, MGERecipeViewerRecipeType.PROJECTING));
     }
 
     @Override

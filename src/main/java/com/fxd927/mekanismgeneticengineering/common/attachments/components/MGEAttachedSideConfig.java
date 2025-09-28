@@ -38,8 +38,7 @@ public record MGEAttachedSideConfig(Map<TransmissionType, AttachedSideConfig.Lig
 
     public static final AttachedSideConfig PROJECTING = Util.make(() -> {
         Map<TransmissionType, AttachedSideConfig.LightConfigInfo> configInfo = new EnumMap<>(TransmissionType.class);
-        configInfo.put(TransmissionType.ITEM, AttachedSideConfig.LightConfigInfo.OUT_EJECT);
-        configInfo.put(TransmissionType.CHEMICAL, LightConfigInfo.TWO_INPUT_ONE_OUTPUT);
+        configInfo.put(TransmissionType.CHEMICAL, LightConfigInfo.THREE_INPUT_ONE_OUTPUT);
         configInfo.put(TransmissionType.ENERGY, AttachedSideConfig.LightConfigInfo.INPUT_ONLY);
         return new AttachedSideConfig(configInfo);
     });
@@ -61,6 +60,16 @@ public record MGEAttachedSideConfig(Map<TransmissionType, AttachedSideConfig.Lig
             sideConfig.put(RelativeSide.LEFT, DataType.OUTPUT);
             sideConfig.put(RelativeSide.TOP, DataType.OUTPUT_1);
             sideConfig.put(RelativeSide.RIGHT, DataType.OUTPUT_2);
+            sideConfig.put(RelativeSide.BACK, DataType.ENERGY);
+            return new AttachedSideConfig.LightConfigInfo(sideConfig, true);
+        });
+
+        public static final AttachedSideConfig.LightConfigInfo THREE_INPUT_ONE_OUTPUT = Util.make(() -> {
+            Map<RelativeSide, DataType> sideConfig = new EnumMap<>(RelativeSide.class);
+            sideConfig.put(RelativeSide.LEFT, DataType.INPUT_1);
+            sideConfig.put(RelativeSide.TOP, DataType.INPUT_2);
+            sideConfig.put(RelativeSide.FRONT, DataType.INPUT);
+            sideConfig.put(RelativeSide.RIGHT, DataType.OUTPUT);
             sideConfig.put(RelativeSide.BACK, DataType.ENERGY);
             return new AttachedSideConfig.LightConfigInfo(sideConfig, true);
         });
