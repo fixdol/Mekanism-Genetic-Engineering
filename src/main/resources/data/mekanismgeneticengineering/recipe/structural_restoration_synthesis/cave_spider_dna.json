@@ -1,0 +1,21 @@
+{
+  "type":"mekanismgeneticengineering:structural_restoration_synthesis",
+  "first_input":
+  {
+    "amount":120,
+    "chemical":"mekanismgeneticengineering:bug_gene"
+  },
+  "second_input":
+  {
+    "amount":120,
+    "chemical":"mekanismgeneticengineering:night_vision_gene"
+  },
+  "third_input": {
+    "amount": 120,
+    "chemical": "mekanismgeneticengineering:using_effect_gene"
+  },
+  "output": {
+    "amount": 100,
+    "id": "mekanismgeneticengineering:cave_spider_dna"
+  }
+}

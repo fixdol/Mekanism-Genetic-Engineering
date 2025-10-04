@@ -1,0 +1,17 @@
+{
+  "type":"mekanismgeneticengineering:structural_restoration_synthesis",
+  "first_input":
+  {
+    "amount":150,
+    "chemical":"mekanismgeneticengineering:general_environmental_compatibility_gene"
+  },
+  "second_input":
+  {
+    "amount":150,
+    "chemical":"mekanismgeneticengineering:transportation_gene"
+  },
+  "output": {
+    "amount": 100,
+    "id": "mekanismgeneticengineering:donkey_dna"
+  }
+}

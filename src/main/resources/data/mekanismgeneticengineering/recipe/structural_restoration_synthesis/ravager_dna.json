@@ -1,0 +1,17 @@
+{
+  "type":"mekanismgeneticengineering:structural_restoration_synthesis",
+  "first_input":
+  {
+    "amount":1000,
+    "chemical":"mekanismgeneticengineering:evilness_gene"
+  },
+  "second_input":
+  {
+    "amount":1000,
+    "chemical":"mekanismgeneticengineering:transportation_gene"
+  },
+  "output": {
+    "amount": 100,
+    "id": "mekanismgeneticengineering:ravager_dna"
+  }
+}

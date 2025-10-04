@@ -14,5 +14,10 @@
   {
     "amount":300,
     "id":"mekanismgeneticengineering:multiplication_gene"
+  },
+  "third_output":
+  {
+    "amount":300,
+    "id":"mekanismgeneticengineering:the_end_gene"
   }
 }

@@ -1,0 +1,17 @@
+{
+  "type":"mekanismgeneticengineering:structural_restoration_synthesis",
+  "first_input":
+  {
+    "amount":300,
+    "chemical":"mekanismgeneticengineering:speed_gene"
+  },
+  "second_input":
+  {
+    "amount":300,
+    "chemical":"mekanismgeneticengineering:spatial_awareness_gene"
+  },
+  "output": {
+    "amount": 100,
+    "id": "mekanismgeneticengineering:breeze_dna"
+  }
+}

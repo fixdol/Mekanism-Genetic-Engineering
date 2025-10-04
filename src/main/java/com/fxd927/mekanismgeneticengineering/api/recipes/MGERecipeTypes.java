@@ -12,7 +12,7 @@ public class MGERecipeTypes {
     public static final DeferredHolder<RecipeType<?>, RecipeType<ItemChemicalChemicalToChemicalRecipe>> TYPE_NUCLEAR_ACID_CENTRIFUGE = DeferredHolder.create(Registries.RECIPE_TYPE, NAME_NUCLEAR_ACID_CENTRIFUGE);
     public static final ResourceLocation NAME_GENE_ANALYSIS = ResourceLocation.fromNamespaceAndPath(MekanismGeneticEngineering.MODID, "genetic_analysis");
     public static final DeferredHolder<RecipeType<?>, RecipeType<ChemicalToTripleChemicalRecipe>> TYPE_GENE_ANALYSIS = DeferredHolder.create(Registries.RECIPE_TYPE, NAME_GENE_ANALYSIS);
-    public static final ResourceLocation NAME_PROJECTING = ResourceLocation.fromNamespaceAndPath(MekanismGeneticEngineering.MODID, "projecting");
-    public static final DeferredHolder<RecipeType<?>, RecipeType<TriChemicalToChemicalRecipe>> TYPE_PROJECTING = DeferredHolder.create(Registries.RECIPE_TYPE, NAME_PROJECTING);
+    public static final ResourceLocation NAME_STRUCTURAL_RESTORATION_SYNTHESIS = ResourceLocation.fromNamespaceAndPath(MekanismGeneticEngineering.MODID, "structural_restoration_synthesis");
+    public static final DeferredHolder<RecipeType<?>, RecipeType<TriChemicalToChemicalRecipe>> TYPE_STRUCTURAL_RESTORATION_SYNTHESIS = DeferredHolder.create(Registries.RECIPE_TYPE, NAME_STRUCTURAL_RESTORATION_SYNTHESIS);
 
 }

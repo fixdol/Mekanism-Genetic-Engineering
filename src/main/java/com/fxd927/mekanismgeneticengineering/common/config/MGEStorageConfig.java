@@ -11,11 +11,17 @@ public class MGEStorageConfig extends BaseMekanismConfig {
     private final ModConfigSpec configSpec;
 
     public final CachedLongValue nuclearAcidCentrifuge;
+    public final CachedLongValue geneAnalyzer;
+    public final CachedLongValue structuralRestorationSynthesisMachine;
 
     MGEStorageConfig() {
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
         nuclearAcidCentrifuge = CachedLongValue.definedMin(this, builder, MGEConfigTranslations.ENERGY_STORAGE_NUCLEAR_ACID_CENTRIFUGE, "nuclearAcidCentrifuge",
+                80_000L, 1);
+        geneAnalyzer = CachedLongValue.definedMin(this, builder, MGEConfigTranslations.ENERGY_STORAGE_GENE_ANALYZER, "geneAnalyzer",
+                80_000L, 1);
+        structuralRestorationSynthesisMachine = CachedLongValue.definedMin(this, builder, MGEConfigTranslations.ENERGY_STORAGE_STRUCTURAL_RESTORATION_SYNTHESIS_MACHINE, "structuralRestorationSynthesisMachine",
                 80_000L, 1);
 
         configSpec = builder.build();

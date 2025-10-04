@@ -9,11 +9,16 @@ public class MGEUsageConfig extends BaseMekanismConfig {
     private final ModConfigSpec configSpec;
 
     public final CachedLongValue nuclearAcidCentrifuge;
+    public final CachedLongValue geneAnalyzer;
+    public final CachedLongValue structuralRestorationSynthesisMachine;
 
     MGEUsageConfig(){
         ModConfigSpec.Builder builder = new ModConfigSpec.Builder();
 
         nuclearAcidCentrifuge = CachedLongValue.definePositive(this, builder, MGEConfigTranslations.ENERGY_USAGE_NUCLEAR_ACID_CENTRIFUGE, "nuclearAcidCentrifuge", 200L);
+        geneAnalyzer = CachedLongValue.definePositive(this, builder, MGEConfigTranslations.ENERGY_USAGE_GENE_ANALYZER, "geneAnalyzer", 200L);
+        structuralRestorationSynthesisMachine = CachedLongValue.definePositive(this, builder, MGEConfigTranslations.ENERGY_USAGE_STRUCTURAL_RESTORATION_SYNTHESIS_MACHINE, "structuralRestorationSynthesisMachine", 200L);
+
 
         configSpec = builder.build();
     }

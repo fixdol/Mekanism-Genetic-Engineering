@@ -1,0 +1,17 @@
+{
+  "type":"mekanismgeneticengineering:structural_restoration_synthesis",
+  "first_input":
+  {
+    "amount":200,
+    "chemical":"mekanismgeneticengineering:hot_resistance_gene"
+  },
+  "second_input":
+  {
+    "amount":200,
+    "chemical":"mekanismgeneticengineering:transportation_gene"
+  },
+  "output": {
+    "amount": 100,
+    "id": "mekanismgeneticengineering:strider_dna"
+  }
+}

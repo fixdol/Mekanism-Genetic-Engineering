@@ -3,7 +3,7 @@ package com.fxd927.mekanismgeneticengineering.common.registries;
 import com.fxd927.mekanismgeneticengineering.common.MekanismGeneticEngineering;
 import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityGeneAnalyzer;
 import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityNuclearAcidCentrifuge;
-import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityTraitDecodingProjector;
+import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityStructuralRestorationSynthesisMachine;
 import mekanism.common.capabilities.Capabilities;
 import mekanism.common.registration.impl.TileEntityTypeDeferredRegister;
 import mekanism.common.registration.impl.TileEntityTypeRegistryObject;
@@ -28,8 +28,8 @@ public class MGETileEntityTypes {
             .serverTicker(TileEntityMekanism::tickServer)
             .withSimple(Capabilities.CONFIG_CARD)
             .build();
-    public static final TileEntityTypeRegistryObject<TileEntityTraitDecodingProjector> TRAIT_DECODING_PROJECTOR = TILE_ENTITY_TYPES
-            .mekBuilder(MGEBlocks.TRAIT_DECODING_PROJECTOR, TileEntityTraitDecodingProjector::new)
+    public static final TileEntityTypeRegistryObject<TileEntityStructuralRestorationSynthesisMachine> STRUCTURAL_RESTORATION_SYNTHESIS_MACHINE = TILE_ENTITY_TYPES
+            .mekBuilder(MGEBlocks.STRUCTURAL_RESTORATION_SYNTHESIS_MACHINE, TileEntityStructuralRestorationSynthesisMachine::new)
             .clientTicker(TileEntityMekanism::tickClient)
             .serverTicker(TileEntityMekanism::tickServer)
             .withSimple(Capabilities.CONFIG_CARD)

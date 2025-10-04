@@ -17,7 +17,11 @@ import java.util.stream.Stream;
 
 public enum MGEConfigTranslations implements IConfigTranslation {
     ENERGY_USAGE_NUCLEAR_ACID_CENTRIFUGE(TranslationPreset.ENERGY_USAGE, "Nuclear Acid Centrifuge"),
-    ENERGY_STORAGE_NUCLEAR_ACID_CENTRIFUGE(TranslationPreset.ENERGY_STORAGE, "Nuclear Acid Centrifuge");
+    ENERGY_STORAGE_NUCLEAR_ACID_CENTRIFUGE(TranslationPreset.ENERGY_STORAGE, "Nuclear Acid Centrifuge"),
+    ENERGY_USAGE_GENE_ANALYZER(TranslationPreset.ENERGY_USAGE, "Gene Analyzer"),
+    ENERGY_STORAGE_GENE_ANALYZER(TranslationPreset.ENERGY_STORAGE, "Gene Analyzer"),
+    ENERGY_USAGE_STRUCTURAL_RESTORATION_SYNTHESIS_MACHINE(TranslationPreset.ENERGY_USAGE, "Structural Restoration Synthesis Machine"),
+    ENERGY_STORAGE_STRUCTURAL_RESTORATION_SYNTHESIS_MACHINE(TranslationPreset.ENERGY_STORAGE, "Structural Restoration Synthesis Machine");
 
     private final String key;
     private final String title;

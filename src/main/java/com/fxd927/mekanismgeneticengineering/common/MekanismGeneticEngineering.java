@@ -5,9 +5,14 @@ import com.fxd927.mekanismgeneticengineering.common.recipe.MGERecipeType;
 import com.fxd927.mekanismgeneticengineering.common.registries.*;
 import net.minecraft.resources.ResourceLocation;
 
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.event.AddReloadListenerEvent;
 
 @Mod(MekanismGeneticEngineering.MODID)
 public class MekanismGeneticEngineering
@@ -34,5 +39,14 @@ public class MekanismGeneticEngineering
 
     public static ResourceLocation rl(String path){
         return ResourceLocation.fromNamespaceAndPath(MekanismGeneticEngineering.MODID, path);
+    }
+
+    @EventBusSubscriber(modid = MODID, value = Dist.CLIENT)
+    public static class ClientModEvents
+    {
+        @SubscribeEvent
+        public static void onAddReloadListeners(AddReloadListenerEvent event) {
+            event.addListener(new CustomMobDNALoader());
+        }
     }
 }

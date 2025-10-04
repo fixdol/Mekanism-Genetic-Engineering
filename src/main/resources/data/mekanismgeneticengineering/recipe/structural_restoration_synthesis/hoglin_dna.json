@@ -1,0 +1,17 @@
+{
+  "type":"mekanismgeneticengineering:structural_restoration_synthesis",
+  "first_input":
+  {
+    "amount":400,
+    "chemical":"mekanismgeneticengineering:hot_resistance_gene"
+  },
+  "second_input":
+  {
+    "amount":400,
+    "chemical":"mekanismgeneticengineering:smell_gene"
+  },
+  "output": {
+    "amount": 100,
+    "id": "mekanismgeneticengineering:hoglin_dna"
+  }
+}

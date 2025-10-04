@@ -8,12 +8,14 @@ import mekanism.api.recipes.vanilla_input.ChemicalRecipeInput;
 public record TriChemicalRecipeInput(ChemicalStack firstChemical, ChemicalStack secondChemical, ChemicalStack thirdChemical) implements ChemicalRecipeInput {
     @Override
     public ChemicalStack getChemical(int index) {
-        return switch (index) {
-            case 0 -> firstChemical;
-            case 1 -> secondChemical;
-            case 2 -> thirdChemical;
-            default -> throw new IllegalArgumentException("No chemical for index " + index);
-        };
+        if (index == 0) {
+            return firstChemical;
+        } else if (index == 1) {
+            return secondChemical;
+        } else if (index == 2) {
+            return thirdChemical;
+        }
+        throw new IllegalArgumentException("No chemical for index " + index);
     }
 
     @Override

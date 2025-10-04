@@ -1,0 +1,17 @@
+{
+  "type":"mekanismgeneticengineering:structural_restoration_synthesis",
+  "first_input":
+  {
+    "amount":80,
+    "chemical":"mekanismgeneticengineering:bug_gene"
+  },
+  "second_input":
+  {
+    "amount":80,
+    "chemical":"mekanismgeneticengineering:multiplication_gene"
+  },
+  "output": {
+    "amount": 100,
+    "id": "mekanismgeneticengineering:silverfish_dna"
+  }
+}

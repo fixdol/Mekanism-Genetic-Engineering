@@ -94,7 +94,7 @@ public class MGEJEI implements IModPlugin {
 
         registry.addRecipeCategories(new ItemChemicalChemicalToChemicalRecipeCategory(guiHelper, MGERecipeViewerRecipeType.NUCLEAR_ACID_CENTRIFUGE));
         registry.addRecipeCategories(new ChemicalToTriChemicalRecipeCategory(guiHelper, MGERecipeViewerRecipeType.GENE_ANALYSIS));
-        registry.addRecipeCategories(new TriChemicalToChemicalRecipeCategory(guiHelper, MGERecipeViewerRecipeType.PROJECTING));
+        registry.addRecipeCategories(new TriChemicalToChemicalRecipeCategory(guiHelper, MGERecipeViewerRecipeType.STRUCTURAL_RESTORATION_SYNTHESIS));
     }
 
     @Override
@@ -109,7 +109,7 @@ public class MGEJEI implements IModPlugin {
     public void registerRecipeCatalysts(@Nonnull IRecipeCatalystRegistration registry) {
         CatalystRegistryHelper.register(registry, MGERecipeViewerRecipeType.NUCLEAR_ACID_CENTRIFUGE);
         CatalystRegistryHelper.register(registry, MGERecipeViewerRecipeType.GENE_ANALYSIS);
-        CatalystRegistryHelper.register(registry, MGERecipeViewerRecipeType.PROJECTING);
+        CatalystRegistryHelper.register(registry, MGERecipeViewerRecipeType.STRUCTURAL_RESTORATION_SYNTHESIS);
     }
 
     @Override
@@ -120,6 +120,6 @@ public class MGEJEI implements IModPlugin {
 
         MGERecipeRegistryHelper.register(registry, MGERecipeViewerRecipeType.NUCLEAR_ACID_CENTRIFUGE, MGERecipeType.NUCLEAR_ACID_CENTRIFUGE);
         MGERecipeRegistryHelper.register(registry, MGERecipeViewerRecipeType.GENE_ANALYSIS, MGERecipeType.GENE_ANALYSIS);
-        MGERecipeRegistryHelper.register(registry, MGERecipeViewerRecipeType.PROJECTING, MGERecipeType.PROJECTING);
+        MGERecipeRegistryHelper.register(registry, MGERecipeViewerRecipeType.STRUCTURAL_RESTORATION_SYNTHESIS, MGERecipeType.STRUCTURAL_RESTORATION_SYNTHESIS);
     }
 }

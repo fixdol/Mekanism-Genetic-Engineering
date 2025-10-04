@@ -43,8 +43,8 @@ public class MGERecipeType <VANILLA_INPUT extends RecipeInput, RECIPE extends Me
     public static final MGERecipeTypeRegistryObject<SingleChemicalRecipeInput, ChemicalToTripleChemicalRecipe, MGEInputRecipeCache.SingleChemical<ChemicalToTripleChemicalRecipe>> GENE_ANALYSIS =
             register(MGERecipeTypes.NAME_GENE_ANALYSIS, recipeType -> new MGEInputRecipeCache.SingleChemical<>(recipeType, ChemicalToTripleChemicalRecipe::getInput));
 
-    public static final MGERecipeTypeRegistryObject<TriChemicalRecipeInput, TriChemicalToChemicalRecipe, MGEInputRecipeCache.TriChemical<TriChemicalToChemicalRecipe>> PROJECTING =
-            register(MGERecipeTypes.NAME_PROJECTING, recipeType -> new MGEInputRecipeCache.TriChemical<>(recipeType, TriChemicalToChemicalRecipe::getFirstInput, TriChemicalToChemicalRecipe::getSecondInput, TriChemicalToChemicalRecipe::getThirdInput));
+    public static final MGERecipeTypeRegistryObject<TriChemicalRecipeInput, TriChemicalToChemicalRecipe, MGEInputRecipeCache.TriChemical<TriChemicalToChemicalRecipe>> STRUCTURAL_RESTORATION_SYNTHESIS =
+            register(MGERecipeTypes.NAME_STRUCTURAL_RESTORATION_SYNTHESIS, recipeType -> new MGEInputRecipeCache.TriChemical<>(recipeType, TriChemicalToChemicalRecipe::getFirstInput, TriChemicalToChemicalRecipe::getSecondInput, TriChemicalToChemicalRecipe::getThirdInput));
 
 
     private static <VANILLA_INPUT extends RecipeInput, RECIPE extends MekanismRecipe<VANILLA_INPUT>, INPUT_CACHE extends IInputRecipeCache>

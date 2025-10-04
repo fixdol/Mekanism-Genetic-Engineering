@@ -42,40 +42,39 @@ public class TripleChemicalToChemicalCachedRecipe extends CachedRecipe<TriChemic
     @Override
     protected void calculateOperationsThisTick(OperationTracker tracker) {
         super.calculateOperationsThisTick(tracker);
+        if (!tracker.shouldContinueChecking()) {
+            return;
+        }
+
+        // 1st input
+        firstChemicalRecipeInput = chemicalFirstInputHandler.getRecipeInput(recipe.getFirstInput());
+        if (firstChemicalRecipeInput.isEmpty()) {
+            tracker.mismatchedRecipe();
+            return;
+        }
+
+        // 2nd input
+        secondChemicalRecipeInput = chemicalSecondInputHandler.getRecipeInput(recipe.getSecondInput());
+        if (secondChemicalRecipeInput.isEmpty()) {
+            tracker.mismatchedRecipe();
+            return;
+        }
+
+        // 3rd input (optional)
+        thirdChemicalRecipeInput = chemicalThirdInputHandler.getRecipeInput(recipe.getThirdInput());
+        // → 空の場合は「0」として処理を継続
+
         if (tracker.shouldContinueChecking()) {
-            firstChemicalRecipeInput = chemicalFirstInputHandler.getRecipeInput(recipe.getFirstInput());
-            if (firstChemicalRecipeInput.isEmpty()) {
-                tracker.mismatchedRecipe();
-                return;
-            }
-
-            secondChemicalRecipeInput = chemicalSecondInputHandler.getRecipeInput(recipe.getSecondInput());
-            if (secondChemicalRecipeInput.isEmpty()) {
-                tracker.mismatchedRecipe();
-                return;
-            }
-
-            if (!recipe.getThirdInput().hasNoMatchingInstances()) {
-                thirdChemicalRecipeInput = chemicalThirdInputHandler.getRecipeInput(recipe.getThirdInput());
-                if (thirdChemicalRecipeInput.isEmpty()) {
-                    tracker.mismatchedRecipe();
-                    return;
-                }
-            } else {
-                thirdChemicalRecipeInput = ChemicalStack.EMPTY;
-            }
-
             chemicalFirstInputHandler.calculateOperationsCanSupport(tracker, firstChemicalRecipeInput);
             if (tracker.shouldContinueChecking()) {
                 chemicalSecondInputHandler.calculateOperationsCanSupport(tracker, secondChemicalRecipeInput);
+                if (tracker.shouldContinueChecking() && !thirdChemicalRecipeInput.isEmpty()) {
+                    // 3番目の入力がある場合のみ計算に含める
+                    chemicalThirdInputHandler.calculateOperationsCanSupport(tracker, thirdChemicalRecipeInput);
+                }
                 if (tracker.shouldContinueChecking()) {
-                    if (!thirdChemicalRecipeInput.isEmpty()) {
-                        chemicalThirdInputHandler.calculateOperationsCanSupport(tracker, thirdChemicalRecipeInput);
-                    }
-                    if (tracker.shouldContinueChecking()) {
-                        output = recipe.getOutput(firstChemicalRecipeInput, secondChemicalRecipeInput, thirdChemicalRecipeInput);
-                        outputHandler.calculateOperationsCanSupport(tracker, output);
-                    }
+                    output = recipe.getOutput(firstChemicalRecipeInput, secondChemicalRecipeInput, thirdChemicalRecipeInput);
+                    outputHandler.calculateOperationsCanSupport(tracker, output);
                 }
             }
         }
@@ -91,16 +90,9 @@ public class TripleChemicalToChemicalCachedRecipe extends CachedRecipe<TriChemic
         if (second.isEmpty()) {
             return false;
         }
-
-        if (!recipe.getThirdInput().hasNoMatchingInstances()) {
-            ChemicalStack third = chemicalThirdInputHandler.getInput();
-            if (third.isEmpty()) {
-                return false;
-            }
-            return recipe.test(first, second, third);
-        } else {
-            return recipe.test(first, second, ChemicalStack.EMPTY);
-        }
+        ChemicalStack third = chemicalThirdInputHandler.getInput();
+        // third が空でも true にできる
+        return recipe.test(first, second, third);
     }
 
     @Override
@@ -114,4 +106,5 @@ public class TripleChemicalToChemicalCachedRecipe extends CachedRecipe<TriChemic
             outputHandler.handleOutput(output, operations);
         }
     }
+
 }

@@ -1,6 +1,5 @@
 package com.fxd927.mekanismgeneticengineering.common.registries;
 
-import com.fxd927.mekanismgeneticengineering.api.recipes.vanilla_input.SingleItemBiChemicalRecipeInput;
 import com.fxd927.mekanismgeneticengineering.common.MekanismGeneticEngineering;
 import com.fxd927.mekanismgeneticengineering.common.attachments.chemical.MGEChemicalTanksBuilder;
 import com.fxd927.mekanismgeneticengineering.common.attachments.components.MGEAttachedSideConfig;
@@ -11,25 +10,15 @@ import com.fxd927.mekanismgeneticengineering.common.recipe.lookup.cache.MGEInput
 import com.fxd927.mekanismgeneticengineering.common.recipe.lookup.cache.MGETripleInputRecipeCache;
 import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityGeneAnalyzer;
 import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityNuclearAcidCentrifuge;
-import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityTraitDecodingProjector;
+import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityStructuralRestorationSynthesisMachine;
 import mekanism.common.attachments.component.AttachedEjector;
-import mekanism.common.attachments.component.AttachedSideConfig;
 import mekanism.common.attachments.containers.ContainerType;
-import mekanism.common.attachments.containers.chemical.ChemicalTanksBuilder;
-import mekanism.common.attachments.containers.item.ItemSlotsBuilder;
 import mekanism.common.block.prefab.BlockTile;
-import mekanism.common.content.blocktype.Machine;
 import mekanism.common.item.block.ItemBlockTooltip;
-import mekanism.common.recipe.MekanismRecipeType;
-import mekanism.common.recipe.lookup.cache.InputRecipeCache;
-import mekanism.common.recipe.lookup.cache.SingleInputRecipeCache;
 import mekanism.common.registration.impl.BlockDeferredRegister;
 import mekanism.common.registration.impl.BlockRegistryObject;
-import mekanism.common.registration.impl.ContainerTypeDeferredRegister;
-import mekanism.common.registries.MekanismBlockTypes;
 import mekanism.common.registries.MekanismDataComponents;
 import mekanism.common.resource.BlockResourceInfo;
-import mekanism.common.tile.machine.TileEntityChemicalInfuser;
 
 public class MGEBlocks {
 
@@ -84,18 +73,18 @@ public class MGEBlocks {
                     )
             );
 
-    public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityTraitDecodingProjector, MGEMachine<TileEntityTraitDecodingProjector>>, ItemBlockTooltip<BlockTile.BlockTileModel<TileEntityTraitDecodingProjector, MGEMachine<TileEntityTraitDecodingProjector>>>> TRAIT_DECODING_PROJECTOR =
-            BLOCKS.register("trait_decoding_projector", () -> new BlockTile.BlockTileModel<>(MGEBlockTypes.TRAIT_DECODING_PROJECTOR, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),
+    public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityStructuralRestorationSynthesisMachine, MGEMachine<TileEntityStructuralRestorationSynthesisMachine>>, ItemBlockTooltip<BlockTile.BlockTileModel<TileEntityStructuralRestorationSynthesisMachine, MGEMachine<TileEntityStructuralRestorationSynthesisMachine>>>> STRUCTURAL_RESTORATION_SYNTHESIS_MACHINE =
+            BLOCKS.register("structural_restoration_synthesis_machine", () -> new BlockTile.BlockTileModel<>(MGEBlockTypes.STRUCTURAL_RESTORATION_SYNTHESIS_MACHINE, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),
                     (block, properties) -> new ItemBlockTooltip<>(block, true, properties
                             .component(MekanismDataComponents.EJECTOR, AttachedEjector.DEFAULT)
                             .component(MekanismDataComponents.SIDE_CONFIG, MGEAttachedSideConfig.PROJECTING)
                     )
             ).forItemHolder(holder -> holder
                     .addAttachmentOnlyContainers(ContainerType.CHEMICAL, () -> MGEChemicalTanksBuilder.builder()
-                            .addBasic(TileEntityTraitDecodingProjector.MAX_CHEMICAL, MGERecipeType.PROJECTING, MGEInputRecipeCache.TriChemical::containsInputA)
-                            .addBasic(TileEntityTraitDecodingProjector.MAX_CHEMICAL, MGERecipeType.PROJECTING, MGEInputRecipeCache.TriChemical::containsInputB)
-                            .addBasic(TileEntityTraitDecodingProjector.MAX_CHEMICAL, MGERecipeType.PROJECTING, MGEInputRecipeCache.TriChemical::containsInputC)
-                            .addBasic(TileEntityTraitDecodingProjector.MAX_CHEMICAL)
+                            .addBasic(TileEntityStructuralRestorationSynthesisMachine.MAX_CHEMICAL, MGERecipeType.STRUCTURAL_RESTORATION_SYNTHESIS, MGEInputRecipeCache.TriChemical::containsInputA)
+                            .addBasic(TileEntityStructuralRestorationSynthesisMachine.MAX_CHEMICAL, MGERecipeType.STRUCTURAL_RESTORATION_SYNTHESIS, MGEInputRecipeCache.TriChemical::containsInputB)
+                            .addBasic(TileEntityStructuralRestorationSynthesisMachine.MAX_CHEMICAL, MGERecipeType.STRUCTURAL_RESTORATION_SYNTHESIS, MGEInputRecipeCache.TriChemical::containsInputC)
+                            .addBasic(TileEntityStructuralRestorationSynthesisMachine.MAX_CHEMICAL)
                             .build()
                     ).addAttachmentOnlyContainers(ContainerType.ITEM, () -> MGEItemSlotsBuilder.builder()
                             .addChemicalFillSlot(0)

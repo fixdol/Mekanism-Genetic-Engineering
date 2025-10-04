@@ -1,0 +1,21 @@
+{
+  "type":"mekanismgeneticengineering:structural_restoration_synthesis",
+  "first_input":
+  {
+    "amount":2000,
+    "chemical":"mekanismgeneticengineering:the_end_gene"
+  },
+  "second_input":
+  {
+    "amount":2000,
+    "chemical":"mekanismgeneticengineering:flight_gene"
+  },
+  "third_input": {
+    "amount": 2000,
+    "chemical": "mekanismgeneticengineering:spatial_awareness_gene"
+  },
+  "output": {
+    "amount": 100,
+    "id": "mekanismgeneticengineering:ender_dragon_dna"
+  }
+}

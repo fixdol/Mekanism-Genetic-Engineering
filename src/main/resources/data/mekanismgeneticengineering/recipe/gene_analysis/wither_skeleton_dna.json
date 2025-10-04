@@ -3,7 +3,7 @@
   "input":
   {
     "amount": 100,
-    "chemical": "mekanismgeneticengineering:pillager_dna"
+    "chemical": "mekanismgeneticengineering:wither_skeleton_dna"
   },
   "first_output":
   {
@@ -18,6 +18,6 @@
   "third_output":
   {
     "amount":200,
-    "id":"mekanismgeneticengineering:using_effect_gene"
+    "id":"mekanismgeneticengineering:wither_gene"
   }
 }

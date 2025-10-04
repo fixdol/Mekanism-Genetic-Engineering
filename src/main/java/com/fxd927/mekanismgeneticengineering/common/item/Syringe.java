@@ -1,5 +1,6 @@
 package com.fxd927.mekanismgeneticengineering.common.item;
 
+import com.fxd927.mekanismgeneticengineering.common.CustomMobDNALoader;
 import com.fxd927.mekanismgeneticengineering.common.MobDNAMapping;
 import com.fxd927.mekanismgeneticengineering.common.registries.MGEChemicals;
 import mekanism.api.Action;
@@ -27,12 +28,17 @@ public class Syringe extends ItemGaugeDropper {
         Level level = attacker.level();
         if (!level.isClientSide && attacker instanceof Player) {
             EntityType<?> type = target.getType();
-            Holder<Chemical> chemicalHolder = MobDNAMapping.getDNAForMob(type);
+
+            Holder<Chemical> chemicalHolder = CustomMobDNALoader.getCustomDNA(type);
+
+            if (chemicalHolder == null) {
+                chemicalHolder = MobDNAMapping.getDNAForMob(type);
+            }
 
             if (chemicalHolder != null) {
                 IChemicalHandler handler = Capabilities.CHEMICAL.getCapability(stack);
                 if (handler != null && handler.getChemicalTanks() > 0) {
-                    ChemicalStack chemStack = new ChemicalStack(chemicalHolder, 1000);
+                    ChemicalStack chemStack = new ChemicalStack(chemicalHolder, 10);
                     handler.insertChemical(chemStack, Action.EXECUTE);
                 }
             }

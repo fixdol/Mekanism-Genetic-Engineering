@@ -1,0 +1,21 @@
+{
+  "type":"mekanismgeneticengineering:structural_restoration_synthesis",
+  "first_input":
+  {
+    "amount":200,
+    "chemical":"mekanismgeneticengineering:undead_gene"
+  },
+  "second_input":
+  {
+    "amount":200,
+    "chemical":"mekanismgeneticengineering:hot_resistance_gene"
+  },
+  "third_input": {
+    "amount":200,
+    "chemical":"mekanismgeneticengineering:intelligence_gene"
+  },
+  "output": {
+    "amount": 100,
+    "id": "mekanismgeneticengineering:zombified_piglin_dna"
+  }
+}

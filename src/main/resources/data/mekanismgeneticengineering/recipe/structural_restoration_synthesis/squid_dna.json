@@ -1,0 +1,17 @@
+{
+  "type":"mekanismgeneticengineering:structural_restoration_synthesis",
+  "first_input":
+  {
+    "amount":100,
+    "chemical":"mekanismgeneticengineering:underwater_adaptation_gene"
+  },
+  "second_input":
+  {
+    "amount":100,
+    "chemical":"mekanismgeneticengineering:soft_body_gene"
+  },
+  "output": {
+    "amount": 100,
+    "id": "mekanismgeneticengineering:squid_dna"
+  }
+}

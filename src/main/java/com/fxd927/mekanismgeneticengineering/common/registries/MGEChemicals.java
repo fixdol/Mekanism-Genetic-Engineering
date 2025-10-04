@@ -110,9 +110,11 @@ public class MGEChemicals {
     public static final DeferredChemical<Chemical> SPATIAL_AWARENESS_GENE;
     public static final DeferredChemical<Chemical> SPEED_GENE;
     public static final DeferredChemical<Chemical> TRANSPORTATION_GENE;
+    public static final DeferredChemical<Chemical> THE_END_GENE;
     public static final DeferredChemical<Chemical> UNDEAD_GENE;
     public static final DeferredChemical<Chemical> UNDERWATER_ADAPTATION_GENE;
     public static final DeferredChemical<Chemical> USING_EFFECT_GENE;
+    public static final DeferredChemical<Chemical> WITHER_GENE;
 
 
 
@@ -215,9 +217,11 @@ public class MGEChemicals {
         SPATIAL_AWARENESS_GENE = CHEMICALS.register("spatial_awareness_gene", 0x8A43E6);
         SPEED_GENE = CHEMICALS.register("speed_gene", 0x5FD4F7);
         TRANSPORTATION_GENE = CHEMICALS.register("transportation_gene", 0x94758E);
+        THE_END_GENE = CHEMICALS.register("the_end_gene", 0x7A61FF);
         UNDEAD_GENE = CHEMICALS.register("undead_gene", 0x566255);
         UNDERWATER_ADAPTATION_GENE = CHEMICALS.register("underwater_adaptation_gene", 0x406BFA);
         USING_EFFECT_GENE = CHEMICALS.register("using_effect_gene", 0xFF9A00);
+        WITHER_GENE = CHEMICALS.register("wither_gene", 0x2F2F2F);
     }
 }
 
