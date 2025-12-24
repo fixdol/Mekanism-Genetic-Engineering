@@ -3,6 +3,7 @@ package com.fxd927.mekanismgeneticengineering.common.registries;
 import com.fxd927.mekanismgeneticengineering.common.MGELang;
 import com.fxd927.mekanismgeneticengineering.common.config.MGEConfig;
 import com.fxd927.mekanismgeneticengineering.common.content.blocktype.MGEMachine;
+import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityDropsReproducer;
 import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityGeneAnalyzer;
 import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityNuclearAcidCentrifuge;
 import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityStructuralRestorationSynthesisMachine;
@@ -35,5 +36,13 @@ public class MGEBlockTypes {
             .withEnergyConfig(MGEConfig.mgeUsage.structuralRestorationSynthesisMachine, MGEConfig.mgeStorage.structuralRestorationSynthesisMachine)
             .withSideConfig(TransmissionType.CHEMICAL, TransmissionType.ITEM, TransmissionType.ENERGY)
             .withComputerSupport("structuralRestorationSynthesis")
+            .build();
+
+    public static final MGEMachine<TileEntityDropsReproducer> DROPS_REPRODUCER = MGEMachine.MGEMachineBuilder
+            .createMGEMachine(() -> MGETileEntityTypes.DROPS_REPRODUCER, MGELang.DESCRIPTION_STRUCTURAL_RESTORATION_SYNTHESIS_MACHINE)
+            .withGui(() -> MGEContainerTypes.DROPS_REPRODUCER)
+            .withEnergyConfig(MGEConfig.mgeUsage.structuralRestorationSynthesisMachine, MGEConfig.mgeStorage.structuralRestorationSynthesisMachine)
+            .withSideConfig(TransmissionType.CHEMICAL, TransmissionType.ITEM, TransmissionType.ENERGY)
+            .withComputerSupport("dropsReproducer")
             .build();
 }

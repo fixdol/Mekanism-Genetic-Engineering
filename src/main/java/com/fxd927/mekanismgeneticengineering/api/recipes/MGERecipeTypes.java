@@ -14,5 +14,8 @@ public class MGERecipeTypes {
     public static final DeferredHolder<RecipeType<?>, RecipeType<ChemicalToTripleChemicalRecipe>> TYPE_GENE_ANALYSIS = DeferredHolder.create(Registries.RECIPE_TYPE, NAME_GENE_ANALYSIS);
     public static final ResourceLocation NAME_STRUCTURAL_RESTORATION_SYNTHESIS = ResourceLocation.fromNamespaceAndPath(MekanismGeneticEngineering.MODID, "structural_restoration_synthesis");
     public static final DeferredHolder<RecipeType<?>, RecipeType<TriChemicalToChemicalRecipe>> TYPE_STRUCTURAL_RESTORATION_SYNTHESIS = DeferredHolder.create(Registries.RECIPE_TYPE, NAME_STRUCTURAL_RESTORATION_SYNTHESIS);
+    public static final ResourceLocation NAME_DROPS_REPRODUCTION = ResourceLocation.fromNamespaceAndPath(MekanismGeneticEngineering.MODID, "drops_reproduction");
+    public static final DeferredHolder<RecipeType<?>, RecipeType<DropsReproductionRecipe>> TYPE_DROPS_REPRODUCTION = DeferredHolder.create(Registries.RECIPE_TYPE, NAME_DROPS_REPRODUCTION);
+
 
 }

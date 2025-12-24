@@ -1,5 +1,6 @@
 package com.fxd927.mekanismgeneticengineering.api.recipes;
 
+import com.fxd927.mekanismgeneticengineering.api.recipes.basic.BasicDropsProductionRecipe;
 import com.fxd927.mekanismgeneticengineering.api.recipes.basic.BasicGeneAnalysisRecipe;
 import com.fxd927.mekanismgeneticengineering.api.recipes.basic.BasicNuclearAcidCentrifugeRecipe;
 import com.fxd927.mekanismgeneticengineering.api.recipes.basic.BasicStructuralRestorationSynthesisRecipe;
@@ -10,5 +11,6 @@ public class MGERecipeSerializers {
     public static DeferredHolder<RecipeSerializer<?>, RecipeSerializer<BasicNuclearAcidCentrifugeRecipe>> NUCLEAR_ACID_CENTRIFUGE;
     public static DeferredHolder<RecipeSerializer<?>, RecipeSerializer<BasicGeneAnalysisRecipe>> GENE_ANALYSIS;
     public static DeferredHolder<RecipeSerializer<?>, RecipeSerializer<BasicStructuralRestorationSynthesisRecipe>> STRUCTURAL_RESTORATION_SYNTHESIS;
+    public static DeferredHolder<RecipeSerializer<?>, RecipeSerializer<BasicDropsProductionRecipe>> DROPS_REPRODUCTION;
 
 }

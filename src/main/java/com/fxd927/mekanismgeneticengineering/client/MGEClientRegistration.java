@@ -1,5 +1,6 @@
 package com.fxd927.mekanismgeneticengineering.client;
 
+import com.fxd927.mekanismgeneticengineering.client.gui.machine.GuiDropsReproducer;
 import com.fxd927.mekanismgeneticengineering.client.gui.machine.GuiGeneAnalyzer;
 import com.fxd927.mekanismgeneticengineering.client.gui.machine.GuiNuclearAcidCentrifuge;
 import com.fxd927.mekanismgeneticengineering.client.gui.machine.GuiStructuralRestorationSynthesisMachine;
@@ -24,5 +25,6 @@ public class MGEClientRegistration {
         ClientRegistrationUtil.registerScreen(event, MGEContainerTypes.NUCLEAR_ACID_CENTRIFUGE, GuiNuclearAcidCentrifuge::new);
         ClientRegistrationUtil.registerScreen(event, MGEContainerTypes.GENE_ANALYZER, GuiGeneAnalyzer::new);
         ClientRegistrationUtil.registerScreen(event, MGEContainerTypes.STRUCTURAL_RESTORATION_SYNTHESIS_MACHINE, GuiStructuralRestorationSynthesisMachine::new);
+        ClientRegistrationUtil.registerScreen(event, MGEContainerTypes.DROPS_REPRODUCER, GuiDropsReproducer::new);
     }
 }

@@ -1,6 +1,7 @@
 package com.fxd927.mekanismgeneticengineering.common.registries;
 
 import com.fxd927.mekanismgeneticengineering.common.MekanismGeneticEngineering;
+import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityDropsReproducer;
 import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityGeneAnalyzer;
 import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityNuclearAcidCentrifuge;
 import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityStructuralRestorationSynthesisMachine;
@@ -30,6 +31,12 @@ public class MGETileEntityTypes {
             .build();
     public static final TileEntityTypeRegistryObject<TileEntityStructuralRestorationSynthesisMachine> STRUCTURAL_RESTORATION_SYNTHESIS_MACHINE = TILE_ENTITY_TYPES
             .mekBuilder(MGEBlocks.STRUCTURAL_RESTORATION_SYNTHESIS_MACHINE, TileEntityStructuralRestorationSynthesisMachine::new)
+            .clientTicker(TileEntityMekanism::tickClient)
+            .serverTicker(TileEntityMekanism::tickServer)
+            .withSimple(Capabilities.CONFIG_CARD)
+            .build();
+    public static final TileEntityTypeRegistryObject<TileEntityDropsReproducer> DROPS_REPRODUCER = TILE_ENTITY_TYPES
+            .mekBuilder(MGEBlocks.DROPS_REPRODUCER, TileEntityDropsReproducer::new)
             .clientTicker(TileEntityMekanism::tickClient)
             .serverTicker(TileEntityMekanism::tickServer)
             .withSimple(Capabilities.CONFIG_CARD)

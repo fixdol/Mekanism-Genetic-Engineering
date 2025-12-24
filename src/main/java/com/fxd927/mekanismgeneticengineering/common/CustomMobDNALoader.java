@@ -21,7 +21,6 @@ public class CustomMobDNALoader extends SimpleJsonResourceReloadListener {
 
     public CustomMobDNALoader() {
         super(new com.google.gson.Gson(), "mob_dna");
-        // /data/<modid>/mob_dna/*.json を探索
     }
 
     @Override

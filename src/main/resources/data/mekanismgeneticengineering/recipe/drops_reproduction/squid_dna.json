@@ -1,0 +1,13 @@
+{
+  "type":"mekanismgeneticengineering:drops_reproduction",
+  "input":
+  {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:squid_dna"
+  },
+  "first_output":
+  {
+    "count": 1,
+    "id":"minecraft:ink_sac"
+  }
+}

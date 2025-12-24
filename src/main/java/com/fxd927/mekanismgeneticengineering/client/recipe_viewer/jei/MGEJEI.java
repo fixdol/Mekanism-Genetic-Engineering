@@ -1,6 +1,7 @@
 package com.fxd927.mekanismgeneticengineering.client.recipe_viewer.jei;
 
 import com.fxd927.mekanismgeneticengineering.client.recipe_viewer.jei.machine.ChemicalToTriChemicalRecipeCategory;
+import com.fxd927.mekanismgeneticengineering.client.recipe_viewer.jei.machine.ChemicalToTriItemRecipeCategory;
 import com.fxd927.mekanismgeneticengineering.client.recipe_viewer.jei.machine.ItemChemicalChemicalToChemicalRecipeCategory;
 import com.fxd927.mekanismgeneticengineering.client.recipe_viewer.jei.machine.TriChemicalToChemicalRecipeCategory;
 import com.fxd927.mekanismgeneticengineering.client.recipe_viewer.type.MGERecipeViewerRecipeType;
@@ -95,6 +96,7 @@ public class MGEJEI implements IModPlugin {
         registry.addRecipeCategories(new ItemChemicalChemicalToChemicalRecipeCategory(guiHelper, MGERecipeViewerRecipeType.NUCLEAR_ACID_CENTRIFUGE));
         registry.addRecipeCategories(new ChemicalToTriChemicalRecipeCategory(guiHelper, MGERecipeViewerRecipeType.GENE_ANALYSIS));
         registry.addRecipeCategories(new TriChemicalToChemicalRecipeCategory(guiHelper, MGERecipeViewerRecipeType.STRUCTURAL_RESTORATION_SYNTHESIS));
+        registry.addRecipeCategories(new ChemicalToTriItemRecipeCategory(guiHelper, MGERecipeViewerRecipeType.DROPS_REPRODUCTION));
     }
 
     @Override
@@ -110,6 +112,7 @@ public class MGEJEI implements IModPlugin {
         CatalystRegistryHelper.register(registry, MGERecipeViewerRecipeType.NUCLEAR_ACID_CENTRIFUGE);
         CatalystRegistryHelper.register(registry, MGERecipeViewerRecipeType.GENE_ANALYSIS);
         CatalystRegistryHelper.register(registry, MGERecipeViewerRecipeType.STRUCTURAL_RESTORATION_SYNTHESIS);
+        CatalystRegistryHelper.register(registry, MGERecipeViewerRecipeType.DROPS_REPRODUCTION);
     }
 
     @Override
@@ -121,5 +124,6 @@ public class MGEJEI implements IModPlugin {
         MGERecipeRegistryHelper.register(registry, MGERecipeViewerRecipeType.NUCLEAR_ACID_CENTRIFUGE, MGERecipeType.NUCLEAR_ACID_CENTRIFUGE);
         MGERecipeRegistryHelper.register(registry, MGERecipeViewerRecipeType.GENE_ANALYSIS, MGERecipeType.GENE_ANALYSIS);
         MGERecipeRegistryHelper.register(registry, MGERecipeViewerRecipeType.STRUCTURAL_RESTORATION_SYNTHESIS, MGERecipeType.STRUCTURAL_RESTORATION_SYNTHESIS);
+        MGERecipeRegistryHelper.register(registry, MGERecipeViewerRecipeType.DROPS_REPRODUCTION, MGERecipeType.DROPS_REPRODUCTION);
     }
 }

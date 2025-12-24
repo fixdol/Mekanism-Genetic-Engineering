@@ -1,9 +1,6 @@
 package com.fxd927.mekanismgeneticengineering.common.recipe;
 
-import com.fxd927.mekanismgeneticengineering.api.recipes.ChemicalToTripleChemicalRecipe;
-import com.fxd927.mekanismgeneticengineering.api.recipes.ItemChemicalChemicalToChemicalRecipe;
-import com.fxd927.mekanismgeneticengineering.api.recipes.MGERecipeTypes;
-import com.fxd927.mekanismgeneticengineering.api.recipes.TriChemicalToChemicalRecipe;
+import com.fxd927.mekanismgeneticengineering.api.recipes.*;
 import com.fxd927.mekanismgeneticengineering.api.recipes.vanilla_input.SingleItemBiChemicalRecipeInput;
 import com.fxd927.mekanismgeneticengineering.api.recipes.vanilla_input.TriChemicalRecipeInput;
 import com.fxd927.mekanismgeneticengineering.common.MekanismGeneticEngineering;
@@ -45,6 +42,9 @@ public class MGERecipeType <VANILLA_INPUT extends RecipeInput, RECIPE extends Me
 
     public static final MGERecipeTypeRegistryObject<TriChemicalRecipeInput, TriChemicalToChemicalRecipe, MGEInputRecipeCache.TriChemical<TriChemicalToChemicalRecipe>> STRUCTURAL_RESTORATION_SYNTHESIS =
             register(MGERecipeTypes.NAME_STRUCTURAL_RESTORATION_SYNTHESIS, recipeType -> new MGEInputRecipeCache.TriChemical<>(recipeType, TriChemicalToChemicalRecipe::getFirstInput, TriChemicalToChemicalRecipe::getSecondInput, TriChemicalToChemicalRecipe::getThirdInput));
+
+    public static final MGERecipeTypeRegistryObject<SingleChemicalRecipeInput, DropsReproductionRecipe, MGEInputRecipeCache.SingleChemical<DropsReproductionRecipe>> DROPS_REPRODUCTION =
+            register(MGERecipeTypes.NAME_DROPS_REPRODUCTION, recipeType -> new MGEInputRecipeCache.SingleChemical<>(recipeType, DropsReproductionRecipe::getInput));
 
 
     private static <VANILLA_INPUT extends RecipeInput, RECIPE extends MekanismRecipe<VANILLA_INPUT>, INPUT_CACHE extends IInputRecipeCache>

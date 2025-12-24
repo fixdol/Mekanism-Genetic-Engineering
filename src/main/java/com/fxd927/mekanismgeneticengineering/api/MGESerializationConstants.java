@@ -12,4 +12,7 @@ public final class MGESerializationConstants {
     public static final String FIRST_OUTPUT = "first_output";
     public static final String SECOND_OUTPUT = "second_output";
     public static final String THIRD_OUTPUT = "third_output";
+
+    public static final String SECOND_CHANCE = "second_chance";
+    public static final String THIRD_CHANCE = "third_chance";
 }

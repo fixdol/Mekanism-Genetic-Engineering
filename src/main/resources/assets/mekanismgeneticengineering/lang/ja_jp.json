@@ -1,4 +1,5 @@
 {
+  "block.mekanismgeneticengineering.drops_reproducer": "ドロップ生成機",
   "block.mekanismgeneticengineering.gene_analyzer": "遺伝子解析装置",
   "block.mekanismgeneticengineering.nuclear_acid_centrifuge": "核酸遠心分離機",
   "block.mekanismgeneticengineering.structural_restoration_synthesis_machine": "構造修復合成機",
@@ -103,6 +104,7 @@
   "chemical.mekanismgeneticengineering.using_effect_gene": "エフェクト利用の遺伝子",
   "chemical.mekanismgeneticengineering.wither_gene": "衰弱の遺伝子",
   "constants.mekanismgeneticengineering.mod_name": "Mekanism Genetic Engineering",
+  "container.mekanismgeneticengineering.drops_reproducer": "ドロップ生成機",
   "container.mekanismgeneticengineering.gene_analyzer": "遺伝子解析装置",
   "container.mekanismgeneticengineering.nuclear_acid_centrifuge": "核酸遠心分離機",
   "container.mekanismgeneticengineering.structural_restoration_synthesis_machine": "構造修復合成機",

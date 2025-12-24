@@ -8,6 +8,7 @@ import com.fxd927.mekanismgeneticengineering.common.content.blocktype.MGEMachine
 import com.fxd927.mekanismgeneticengineering.common.recipe.MGERecipeType;
 import com.fxd927.mekanismgeneticengineering.common.recipe.lookup.cache.MGEInputRecipeCache;
 import com.fxd927.mekanismgeneticengineering.common.recipe.lookup.cache.MGETripleInputRecipeCache;
+import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityDropsReproducer;
 import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityGeneAnalyzer;
 import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityNuclearAcidCentrifuge;
 import com.fxd927.mekanismgeneticengineering.common.tile.machine.TileEntityStructuralRestorationSynthesisMachine;
@@ -85,6 +86,27 @@ public class MGEBlocks {
                             .addBasic(TileEntityStructuralRestorationSynthesisMachine.MAX_CHEMICAL, MGERecipeType.STRUCTURAL_RESTORATION_SYNTHESIS, MGEInputRecipeCache.TriChemical::containsInputB)
                             .addBasic(TileEntityStructuralRestorationSynthesisMachine.MAX_CHEMICAL, MGERecipeType.STRUCTURAL_RESTORATION_SYNTHESIS, MGEInputRecipeCache.TriChemical::containsInputC)
                             .addBasic(TileEntityStructuralRestorationSynthesisMachine.MAX_CHEMICAL)
+                            .build()
+                    ).addAttachmentOnlyContainers(ContainerType.ITEM, () -> MGEItemSlotsBuilder.builder()
+                            .addChemicalFillSlot(0)
+                            .addChemicalFillSlot(1)
+                            .addChemicalFillSlot(2)
+                            .addChemicalDrainSlot(3)
+                            .addEnergy()
+                            .build()
+                    )
+            );
+
+    public static final BlockRegistryObject<BlockTile.BlockTileModel<TileEntityDropsReproducer, MGEMachine<TileEntityDropsReproducer>>, ItemBlockTooltip<BlockTile.BlockTileModel<TileEntityDropsReproducer, MGEMachine<TileEntityDropsReproducer>>>> DROPS_REPRODUCER =
+            BLOCKS.register("drops_reproducer", () -> new BlockTile.BlockTileModel<>(MGEBlockTypes.DROPS_REPRODUCER, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),
+                    (block, properties) -> new ItemBlockTooltip<>(block, true, properties
+                            .component(MekanismDataComponents.EJECTOR, AttachedEjector.DEFAULT)
+                            .component(MekanismDataComponents.SIDE_CONFIG, MGEAttachedSideConfig.PROJECTING)
+                    )
+            ).forItemHolder(holder -> holder
+                    .addAttachmentOnlyContainers(ContainerType.CHEMICAL, () -> MGEChemicalTanksBuilder.builder()
+                            .addBasic(TileEntityDropsReproducer.MAX_CHEMICAL, MGERecipeType.DROPS_REPRODUCTION, MGEInputRecipeCache.SingleChemical::containsInput)
+                            .addBasic(TileEntityDropsReproducer.MAX_CHEMICAL)
                             .build()
                     ).addAttachmentOnlyContainers(ContainerType.ITEM, () -> MGEItemSlotsBuilder.builder()
                             .addChemicalFillSlot(0)

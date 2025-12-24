@@ -1,6 +1,7 @@
 package com.fxd927.mekanismgeneticengineering.api.recipes.outputs;
 
 import com.fxd927.mekanismgeneticengineering.api.recipes.ChemicalToTripleChemicalRecipe;
+import com.fxd927.mekanismgeneticengineering.api.recipes.DropsReproductionRecipe;
 import mekanism.api.Action;
 import mekanism.api.AutomationType;
 import mekanism.api.annotations.NothingNullByDefault;
@@ -9,6 +10,7 @@ import mekanism.api.chemical.IChemicalTank;
 import mekanism.api.fluid.IExtendedFluidTank;
 import mekanism.api.inventory.IInventorySlot;
 import mekanism.api.math.MathUtils;
+import mekanism.api.recipes.SawmillRecipe;
 import mekanism.api.recipes.cache.CachedRecipe;
 import mekanism.api.recipes.outputs.IOutputHandler;
 import mekanism.api.recipes.outputs.OutputHelper;
@@ -74,104 +76,153 @@ public class MGEOutputHelper {
         };
     }
 
-    private static void handleOutput(IChemicalTank tank, ChemicalStack toOutput, int operations) {
-        if (operations == 0) {
-            //This should not happen
-            return;
-        }
-        ChemicalStack output = toOutput.copyWithAmount(toOutput.getAmount() * operations);
-        tank.insert(output, Action.EXECUTE, AutomationType.INTERNAL);
+    public static IOutputHandler<DropsReproductionRecipe.@NotNull ChanceOutput> getOutputHandler(IInventorySlot firstSlot, CachedRecipe.OperationTracker.RecipeError firstSlotNotEnoughSpaceError,
+                                                                                        IInventorySlot secondSlot, CachedRecipe.OperationTracker.RecipeError secondSlotNotEnoughSpaceError,
+                                                                                                 IInventorySlot thirdSlot, CachedRecipe.OperationTracker.RecipeError thirdSlotNotEnoughSpaceError) {
+        Objects.requireNonNull(firstSlot, "First slot cannot be null.");
+        Objects.requireNonNull(secondSlot, "Second slot cannot be null.");
+        Objects.requireNonNull(thirdSlot, "Third slot cannot be null.");
+        Objects.requireNonNull(firstSlotNotEnoughSpaceError, "First slot not enough space error cannot be null.");
+        Objects.requireNonNull(secondSlotNotEnoughSpaceError, "Second slot not enough space error cannot be null.");
+        Objects.requireNonNull(thirdSlotNotEnoughSpaceError, "Third slot not enough space error cannot be null.");
+        return new IOutputHandler<>() {
+
+            @Override
+            public void handleOutput(DropsReproductionRecipe.ChanceOutput toOutput, int operations) {
+                MGEOutputHelper.handleOutput(firstSlot, toOutput.getFirstOutput(), operations);
+
+                ItemStack secondOutput = toOutput.getSecondOutput();
+                for (int i = 0; i < operations; i++) {
+                    MGEOutputHelper.handleOutput(secondSlot, secondOutput, 1);
+                    if (i < operations - 1) {
+                        secondOutput = toOutput.nextSecondOutput();
+                    }
+                }
+
+                if (!secondOutput.isEmpty()) {
+                    ItemStack thirdOutput = toOutput.getThirdOutput();
+                    for (int i = 0; i < operations; i++) {
+                        MGEOutputHelper.handleOutput(thirdSlot, thirdOutput, 1);
+                        if (i < operations - 1) {
+                            thirdOutput = toOutput.nextThirdOutput();
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void calculateOperationsCanSupport(CachedRecipe.OperationTracker tracker, DropsReproductionRecipe.ChanceOutput toOutput) {
+                MGEOutputHelper.calculateOperationsCanSupport(tracker, firstSlotNotEnoughSpaceError, firstSlot, toOutput.getFirstOutput());
+
+                if (tracker.shouldContinueChecking()) {
+                    MGEOutputHelper.calculateOperationsCanSupport(tracker, secondSlotNotEnoughSpaceError, secondSlot, toOutput.getMaxSecondOutput());
+                }
+
+                if (tracker.shouldContinueChecking() && !toOutput.getMaxSecondOutput().isEmpty()) {
+                    MGEOutputHelper.calculateOperationsCanSupport(tracker, thirdSlotNotEnoughSpaceError, thirdSlot, toOutput.getMaxThirdOutput());
+                }
+            }
+        };
     }
 
-    private static void handleOutput(IExtendedFluidTank fluidTank, FluidStack toOutput, int operations) {
-        if (operations == 0) {
-            //This should not happen
-            return;
-        }
-        fluidTank.insert(toOutput.copyWithAmount(toOutput.getAmount() * operations), Action.EXECUTE, AutomationType.INTERNAL);
-    }
+            private static void handleOutput(IChemicalTank tank, ChemicalStack toOutput, int operations) {
+                if (operations == 0) {
+                    //This should not happen
+                    return;
+                }
+                ChemicalStack output = toOutput.copyWithAmount(toOutput.getAmount() * operations);
+                tank.insert(output, Action.EXECUTE, AutomationType.INTERNAL);
+            }
 
-    private static void handleOutput(IInventorySlot inventorySlot, ItemStack toOutput, int operations) {
-        if (operations == 0 || toOutput.isEmpty()) {
-            return;
-        }
-        ItemStack output = toOutput.copy();
-        if (operations > 1) {
-            //If we are doing more than one operation we need to make a copy of our stack and change the amount
-            // that we are using the fill the tank with
-            output.setCount(output.getCount() * operations);
-        }
-        inventorySlot.insertItem(output, Action.EXECUTE, AutomationType.INTERNAL);
-    }
+            private static void handleOutput(IExtendedFluidTank fluidTank, FluidStack toOutput, int operations) {
+                if (operations == 0) {
+                    //This should not happen
+                    return;
+                }
+                fluidTank.insert(toOutput.copyWithAmount(toOutput.getAmount() * operations), Action.EXECUTE, AutomationType.INTERNAL);
+            }
 
-    /**
-     * Calculates how many operations the output has room for and updates the given operation tracker.
-     *
-     * @param tracker        Tracker of current errors and max operations.
-     * @param tank           Output.
-     * @param toOutput       Output result.
-     * @param notEnoughSpace The error to apply if the output causes the recipe to not be able to perform any operations.
-     */
-    private static void calculateOperationsCanSupport(CachedRecipe.OperationTracker tracker, CachedRecipe.OperationTracker.RecipeError notEnoughSpace, IChemicalTank tank,
-                                                      ChemicalStack toOutput) {
-        //If our output is empty, we have nothing to add, so we treat it as being able to fit all
-        if (!toOutput.isEmpty()) {
-            //Copy the stack and make it be max size
-            ChemicalStack maxOutput = toOutput.copyWithAmount(Long.MAX_VALUE);
-            //Divide the amount we can actually use by the amount one output operation is equal to, capping it at the max we were told about
-            ChemicalStack remainder = tank.insert(maxOutput, Action.SIMULATE, AutomationType.INTERNAL);
-            long amountUsed = maxOutput.getAmount() - remainder.getAmount();
-            //Divide the amount we can actually use by the amount one output operation is equal to, capping it at the max we were told about
-            int operations = MathUtils.clampToInt(amountUsed / toOutput.getAmount());
-            tracker.updateOperations(operations);
-            if (operations == 0) {
-                if (amountUsed == 0 && tank.getNeeded() > 0) {
-                    tracker.addError(CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
-                } else {
-                    tracker.addError(notEnoughSpace);
+            private static void handleOutput(IInventorySlot inventorySlot, ItemStack toOutput, int operations) {
+                if (operations == 0 || toOutput.isEmpty()) {
+                    return;
+                }
+                ItemStack output = toOutput.copy();
+                if (operations > 1) {
+                    //If we are doing more than one operation we need to make a copy of our stack and change the amount
+                    // that we are using the fill the tank with
+                    output.setCount(output.getCount() * operations);
+                }
+                inventorySlot.insertItem(output, Action.EXECUTE, AutomationType.INTERNAL);
+            }
+
+            /**
+             * Calculates how many operations the output has room for and updates the given operation tracker.
+             *
+             * @param tracker        Tracker of current errors and max operations.
+             * @param tank           Output.
+             * @param toOutput       Output result.
+             * @param notEnoughSpace The error to apply if the output causes the recipe to not be able to perform any operations.
+             */
+            private static void calculateOperationsCanSupport(CachedRecipe.OperationTracker tracker, CachedRecipe.OperationTracker.RecipeError notEnoughSpace, IChemicalTank tank,
+                                                              ChemicalStack toOutput) {
+                //If our output is empty, we have nothing to add, so we treat it as being able to fit all
+                if (!toOutput.isEmpty()) {
+                    //Copy the stack and make it be max size
+                    ChemicalStack maxOutput = toOutput.copyWithAmount(Long.MAX_VALUE);
+                    //Divide the amount we can actually use by the amount one output operation is equal to, capping it at the max we were told about
+                    ChemicalStack remainder = tank.insert(maxOutput, Action.SIMULATE, AutomationType.INTERNAL);
+                    long amountUsed = maxOutput.getAmount() - remainder.getAmount();
+                    //Divide the amount we can actually use by the amount one output operation is equal to, capping it at the max we were told about
+                    int operations = MathUtils.clampToInt(amountUsed / toOutput.getAmount());
+                    tracker.updateOperations(operations);
+                    if (operations == 0) {
+                        if (amountUsed == 0 && tank.getNeeded() > 0) {
+                            tracker.addError(CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
+                        } else {
+                            tracker.addError(notEnoughSpace);
+                        }
+                    }
+                }
+            }
+
+            private static void calculateOperationsCanSupport(CachedRecipe.OperationTracker tracker, CachedRecipe.OperationTracker.RecipeError notEnoughSpace, IExtendedFluidTank tank, FluidStack toOutput) {
+                //If our output is empty, we have nothing to add, so we treat it as being able to fit all
+                if (!toOutput.isEmpty()) {
+                    //Copy the stack and make it be max size
+                    FluidStack maxOutput = toOutput.copyWithAmount(Integer.MAX_VALUE);
+                    //Then simulate filling the fluid tank, so we can see how much actually can fit
+                    FluidStack remainder = tank.insert(maxOutput, Action.SIMULATE, AutomationType.INTERNAL);
+                    int amountUsed = maxOutput.getAmount() - remainder.getAmount();
+                    //Divide the amount we can actually use by the amount one output operation is equal to, capping it at the max we were told about
+                    int operations = amountUsed / toOutput.getAmount();
+                    tracker.updateOperations(operations);
+                    if (operations == 0) {
+                        if (amountUsed == 0 && tank.getNeeded() > 0) {
+                            tracker.addError(CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
+                        } else {
+                            tracker.addError(notEnoughSpace);
+                        }
+                    }
+                }
+            }
+
+            private static void calculateOperationsCanSupport(CachedRecipe.OperationTracker tracker, CachedRecipe.OperationTracker.RecipeError notEnoughSpace, IInventorySlot slot, ItemStack toOutput) {
+                //If our output is empty, we have nothing to add, so we treat it as being able to fit all
+                if (!toOutput.isEmpty()) {
+                    //Make a copy of the stack we are outputting with its maximum size
+                    ItemStack output = toOutput.copyWithCount(toOutput.getMaxStackSize());
+                    ItemStack remainder = slot.insertItem(output, Action.SIMULATE, AutomationType.INTERNAL);
+                    int amountUsed = output.getCount() - remainder.getCount();
+                    //Divide the amount we can actually use by the amount one output operation is equal to, capping it at the max we were told about
+                    int operations = amountUsed / toOutput.getCount();
+                    tracker.updateOperations(operations);
+                    if (operations == 0) {
+                        if (amountUsed == 0 && slot.getLimit(slot.getStack()) - slot.getCount() > 0) {
+                            tracker.addError(CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
+                        } else {
+                            tracker.addError(notEnoughSpace);
+                        }
+                    }
                 }
             }
         }
-    }
-
-    private static void calculateOperationsCanSupport(CachedRecipe.OperationTracker tracker, CachedRecipe.OperationTracker.RecipeError notEnoughSpace, IExtendedFluidTank tank, FluidStack toOutput) {
-        //If our output is empty, we have nothing to add, so we treat it as being able to fit all
-        if (!toOutput.isEmpty()) {
-            //Copy the stack and make it be max size
-            FluidStack maxOutput = toOutput.copyWithAmount(Integer.MAX_VALUE);
-            //Then simulate filling the fluid tank, so we can see how much actually can fit
-            FluidStack remainder = tank.insert(maxOutput, Action.SIMULATE, AutomationType.INTERNAL);
-            int amountUsed = maxOutput.getAmount() - remainder.getAmount();
-            //Divide the amount we can actually use by the amount one output operation is equal to, capping it at the max we were told about
-            int operations = amountUsed / toOutput.getAmount();
-            tracker.updateOperations(operations);
-            if (operations == 0) {
-                if (amountUsed == 0 && tank.getNeeded() > 0) {
-                    tracker.addError(CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
-                } else {
-                    tracker.addError(notEnoughSpace);
-                }
-            }
-        }
-    }
-
-    private static void calculateOperationsCanSupport(CachedRecipe.OperationTracker tracker, CachedRecipe.OperationTracker.RecipeError notEnoughSpace, IInventorySlot slot, ItemStack toOutput) {
-        //If our output is empty, we have nothing to add, so we treat it as being able to fit all
-        if (!toOutput.isEmpty()) {
-            //Make a copy of the stack we are outputting with its maximum size
-            ItemStack output = toOutput.copyWithCount(toOutput.getMaxStackSize());
-            ItemStack remainder = slot.insertItem(output, Action.SIMULATE, AutomationType.INTERNAL);
-            int amountUsed = output.getCount() - remainder.getCount();
-            //Divide the amount we can actually use by the amount one output operation is equal to, capping it at the max we were told about
-            int operations = amountUsed / toOutput.getCount();
-            tracker.updateOperations(operations);
-            if (operations == 0) {
-                if (amountUsed == 0 && slot.getLimit(slot.getStack()) - slot.getCount() > 0) {
-                    tracker.addError(CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT);
-                } else {
-                    tracker.addError(notEnoughSpace);
-                }
-            }
-        }
-    }
-}
