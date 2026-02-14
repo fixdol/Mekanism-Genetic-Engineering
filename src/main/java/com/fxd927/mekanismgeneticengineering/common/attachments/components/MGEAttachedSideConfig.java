@@ -43,8 +43,25 @@ public record MGEAttachedSideConfig(Map<TransmissionType, AttachedSideConfig.Lig
         return new AttachedSideConfig(configInfo);
     });
 
+    public static final AttachedSideConfig DROPS_REPRODUCTION = Util.make(() -> {
+        Map<TransmissionType, AttachedSideConfig.LightConfigInfo> configInfo = new EnumMap<>(TransmissionType.class);
+        configInfo.put(TransmissionType.CHEMICAL, AttachedSideConfig.LightConfigInfo.INPUT_ONLY);
+        configInfo.put(TransmissionType.ITEM, LightConfigInfo.THREE_OUTPUT);
+        configInfo.put(TransmissionType.ENERGY, AttachedSideConfig.LightConfigInfo.INPUT_ONLY);
+        return new AttachedSideConfig(configInfo);
+    });
+
     public record LightConfigInfo(Map<RelativeSide, DataType> sideConfig,
                                   boolean isEjecting) implements IPersistentConfigInfo {
+        public static final AttachedSideConfig.LightConfigInfo THREE_OUTPUT = Util.make(() -> {
+            Map<RelativeSide, DataType> sideConfig = new EnumMap<>(RelativeSide.class);
+            sideConfig.put(RelativeSide.RIGHT, DataType.OUTPUT_1);
+            sideConfig.put(RelativeSide.FRONT, DataType.OUTPUT_2);
+            sideConfig.put(RelativeSide.TOP, DataType.OUTPUT);
+            sideConfig.put(RelativeSide.BACK, DataType.ENERGY);
+            return new AttachedSideConfig.LightConfigInfo(sideConfig, true);
+        });
+
         public static final AttachedSideConfig.LightConfigInfo ONE_INPUT_THREE_OUTPUT = Util.make(() -> {
             Map<RelativeSide, DataType> sideConfig = new EnumMap<>(RelativeSide.class);
             sideConfig.put(RelativeSide.LEFT, DataType.INPUT);

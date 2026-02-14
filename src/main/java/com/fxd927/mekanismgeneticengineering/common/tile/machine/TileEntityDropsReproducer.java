@@ -89,6 +89,7 @@ public class TileEntityDropsReproducer extends MGETileEntityProgressMachine<Drop
         super(MGEBlocks.DROPS_REPRODUCER, pos, state, TRACKED_ERROR_TYPES, BASE_TICKS_REQUIRED);
         configComponent.setupItemIOConfig(Collections.singletonList(inputSlot), List.of(firstOutputSlot, secondOutputSlot, thirdOutputSlot), energySlot, false);
         configComponent.setupInputConfig(TransmissionType.ENERGY, energyContainer);
+        configComponent.setupInputConfig(TransmissionType.CHEMICAL, inputTank);
 
         ejectorComponent = new TileComponentEjector(this);
         ejectorComponent.setOutputData(configComponent, TransmissionType.ITEM);
@@ -130,6 +131,7 @@ public class TileEntityDropsReproducer extends MGETileEntityProgressMachine<Drop
     protected boolean onUpdateServer() {
         boolean sendUpdatePacket = super.onUpdateServer();
         energySlot.fillContainerOrConvert();
+        inputSlot.fillTank();
         recipeCacheLookupMonitor.updateAndProcess();
         return sendUpdatePacket;
     }

@@ -37,11 +37,9 @@ public class DropsReproductionRecipeSerializer implements RecipeSerializer<Basic
         RecordCodecBuilder<BasicDropsProductionRecipe, Optional<ItemStack>> thirdOutputField =
                 ItemStack.CODEC.optionalFieldOf(MGESerializationConstants.THIRD_OUTPUT).forGetter(BasicDropsProductionRecipe::getThirdOutputRaw);
 
-        // 確率フィールド
         MapCodec<Optional<Double>> secondChanceField = chanceCodec.optionalFieldOf(MGESerializationConstants.SECOND_CHANCE);
         MapCodec<Optional<Double>> thirdChanceField = chanceCodec.optionalFieldOf(MGESerializationConstants.THIRD_CHANCE);
 
-        // --- MapCodec ---
         this.codec = RecordCodecBuilder.mapCodec(instance -> instance.group(
                 ChemicalStackIngredient.CODEC.fieldOf(SerializationConstants.INPUT).forGetter(DropsReproductionRecipe::getInput),
 
@@ -67,7 +65,6 @@ public class DropsReproductionRecipeSerializer implements RecipeSerializer<Basic
                 )
         ));
 
-        // --- StreamCodec ---
         this.streamCodec = StreamCodec.composite(
                 ChemicalStackIngredient.STREAM_CODEC, DropsReproductionRecipe::getInput,
                 ItemStack.OPTIONAL_STREAM_CODEC, r -> r.getFirstOutputRaw().orElse(ItemStack.EMPTY),

@@ -1,0 +1,12 @@
+{
+  "type":"mekanismgeneticengineering:drops_reproduction",
+  "input":
+  {
+    "amount": 200,
+    "chemical": "mekanismgeneticengineering:dolphin_dna"
+  },
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:cod"
+  }
+}

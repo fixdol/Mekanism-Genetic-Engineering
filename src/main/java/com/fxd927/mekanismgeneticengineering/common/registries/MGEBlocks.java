@@ -101,7 +101,7 @@ public class MGEBlocks {
             BLOCKS.register("drops_reproducer", () -> new BlockTile.BlockTileModel<>(MGEBlockTypes.DROPS_REPRODUCER, properties -> properties.mapColor(BlockResourceInfo.STEEL.getMapColor())),
                     (block, properties) -> new ItemBlockTooltip<>(block, true, properties
                             .component(MekanismDataComponents.EJECTOR, AttachedEjector.DEFAULT)
-                            .component(MekanismDataComponents.SIDE_CONFIG, MGEAttachedSideConfig.PROJECTING)
+                            .component(MekanismDataComponents.SIDE_CONFIG, MGEAttachedSideConfig.DROPS_REPRODUCTION)
                     )
             ).forItemHolder(holder -> holder
                     .addAttachmentOnlyContainers(ContainerType.CHEMICAL, () -> MGEChemicalTanksBuilder.builder()
