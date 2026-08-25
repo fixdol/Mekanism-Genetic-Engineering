@@ -1,0 +1,21 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:rabbit"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:rabbit_dna"
+  },
+  "second_chance": 1.0,
+  "second_output": {
+    "count": 1,
+    "id": "minecraft:rabbit_hide"
+  },
+  "third_chance": 0.2,
+  "third_output": {
+    "count": 1,
+    "id": "minecraft:rabbit_foot"
+  }
+}

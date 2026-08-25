@@ -27,16 +27,20 @@ import org.jetbrains.annotations.NotNull;
 public class ChemicalToTriItemRecipeCategory extends MGEHolderRecipeCategory<DropsReproductionRecipe> {
 
     private final GuiGauge<?> input;
-    private final GuiSlot output;
+    private final GuiSlot output1;
+    private final GuiSlot output2;
+    private final GuiSlot output3;
 
     public ChemicalToTriItemRecipeCategory(IGuiHelper helper, IRecipeViewerRecipeType<DropsReproductionRecipe> recipeType) {
         super(helper, recipeType);
-        addElement(new GuiUpArrow(this, 60, 38));
         input = addElement(GuiChemicalGauge.getDummy(GaugeType.STANDARD.with(DataType.INPUT), this, 7, 4));
-        addSlot(SlotType.POWER, 56, 53).with(SlotOverlay.POWER);
-        output = addSlot(SlotType.OUTPUT_WIDE, 112, 31);
-        addElement(new GuiVerticalPowerBar(this, RecipeViewerUtils.FULL_BAR, 164, 15));
-        addSimpleProgress(ProgressType.BAR, 78, 38);
+        addSlot(SlotType.POWER, 153, 7).with(SlotOverlay.POWER);
+        addSlot(SlotType.INPUT, 8, 65).with(SlotOverlay.MINUS);
+        output1 = addSlot(SlotType.OUTPUT, 100, 35);
+        output2 = addSlot(SlotType.OUTPUT, 118, 35);
+        output3 = addSlot(SlotType.OUTPUT, 136, 35);
+        addElement(new GuiVerticalPowerBar(this, RecipeViewerUtils.FULL_BAR, 158, 25));
+        addSimpleProgress(ProgressType.LARGE_RIGHT, 40, 40);
     }
 
     @Override
@@ -44,15 +48,15 @@ public class ChemicalToTriItemRecipeCategory extends MGEHolderRecipeCategory<Dro
         super.createRecipeExtras(builder, recipeHolder, focuses);
         double secondChance = recipeHolder.value().getSecondChance();
         if (secondChance > 0) {
-            builder.addText(TextUtils.getPercent(secondChance), output.getWidth() - 2, font().lineHeight)
-                    .setPosition(getGuiLeft() + output.getRelativeX() + 1, getGuiTop() + output.getRelativeBottom() + 1)
+            builder.addText(TextUtils.getPercent(secondChance), output2.getWidth() + 16, font().lineHeight)
+                    .setPosition(getGuiLeft() + output2.getRelativeX() - 15, getGuiTop() + output2.getRelativeBottom() + 1)
                     .setTextAlignment(HorizontalAlignment.RIGHT)
                     .setColor(titleTextColor());
         }
         double thirdChance = recipeHolder.value().getThirdChance();
         if (thirdChance > 0) {
-            builder.addText(TextUtils.getPercent(thirdChance), output.getWidth() - 2, font().lineHeight)
-                    .setPosition(getGuiLeft() + output.getRelativeX() + 1, getGuiTop() + output.getRelativeBottom() + 1)
+            builder.addText(TextUtils.getPercent(thirdChance), output3.getWidth() + 16, font().lineHeight)
+                    .setPosition(getGuiLeft() + output3.getRelativeX() - 15, getGuiTop() + output3.getRelativeBottom() + 1)
                     .setTextAlignment(HorizontalAlignment.RIGHT)
                     .setColor(titleTextColor());
         }
@@ -62,8 +66,8 @@ public class ChemicalToTriItemRecipeCategory extends MGEHolderRecipeCategory<Dro
     public void setRecipe(@NotNull IRecipeLayoutBuilder builder, RecipeHolder<DropsReproductionRecipe> recipeHolder, @NotNull IFocusGroup focusGroup) {
         DropsReproductionRecipe recipe = recipeHolder.value();
         initChemical(builder, RecipeIngredientRole.INPUT, input, recipe.getInput().getRepresentations());
-        initItem(builder, RecipeIngredientRole.OUTPUT, output.getX() + 4, output.getY() + 4, recipe.getFirstOutputDefinition());
-        initItem(builder, RecipeIngredientRole.OUTPUT, output.getX() + 20, output.getY() + 4, recipe.getSecondOutputDefinition());
-        initItem(builder, RecipeIngredientRole.OUTPUT, output.getX() + 36, output.getY() + 4, recipe.getThirdOutputDefinition());
+        initItem(builder, RecipeIngredientRole.OUTPUT, output1.getX(), output1.getY(), recipe.getFirstOutputDefinition());
+        initItem(builder, RecipeIngredientRole.OUTPUT, output2.getX(), output2.getY(), recipe.getSecondOutputDefinition());
+        initItem(builder, RecipeIngredientRole.OUTPUT, output3.getX(), output3.getY(), recipe.getThirdOutputDefinition());
     }
 }

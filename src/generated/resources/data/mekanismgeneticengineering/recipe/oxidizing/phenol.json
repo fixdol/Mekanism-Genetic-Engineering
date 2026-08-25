@@ -1,0 +1,11 @@
+{
+  "type": "mekanism:oxidizing",
+  "input": {
+    "count": 1,
+    "item": "mekanismgeneticengineering:coal_tar"
+  },
+  "output": {
+    "amount": 100,
+    "id": "mekanismgeneticengineering:phenol"
+  }
+}

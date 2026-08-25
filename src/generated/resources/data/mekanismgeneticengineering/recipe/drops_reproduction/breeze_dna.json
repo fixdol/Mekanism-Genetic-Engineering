@@ -1,0 +1,16 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:breeze_rod"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:breeze_dna"
+  },
+  "second_chance": 0.05,
+  "second_output": {
+    "count": 1,
+    "id": "minecraft:wind_charge"
+  }
+}

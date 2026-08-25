@@ -1,0 +1,5 @@
+// 1.21.1	2026-08-25T17:48:39.7516797	Loot Tables
+6ff1923ddaf475d412c5fdb446f207b442cb30f5 data/mekanismgeneticengineering/loot_table/blocks/drops_reproducer.json
+69d63916a06ba9fc19d52df7485001d5f5f6800e data/mekanismgeneticengineering/loot_table/blocks/gene_analyzer.json
+bb00c0b3d057193f1d25bb9f7124bd02be1bc23f data/mekanismgeneticengineering/loot_table/blocks/nuclear_acid_centrifuge.json
+939b7326a6ddfa7451a2b784b86ff872c20eae27 data/mekanismgeneticengineering/loot_table/blocks/structural_restoration_synthesis_machine.json

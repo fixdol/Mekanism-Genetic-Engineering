@@ -1,0 +1,21 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:rotten_flesh"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:zombified_piglin_dna"
+  },
+  "second_chance": 1.0,
+  "second_output": {
+    "count": 1,
+    "id": "minecraft:gold_nugget"
+  },
+  "third_chance": 0.05,
+  "third_output": {
+    "count": 1,
+    "id": "minecraft:gold_ingot"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:ghast_tear"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:ghast_dna"
+  },
+  "second_chance": 1.0,
+  "second_output": {
+    "count": 1,
+    "id": "minecraft:gunpowder"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 3,
+    "id": "minecraft:porkchop"
+  },
+  "input": {
+    "amount": 200,
+    "chemical": "mekanismgeneticengineering:hoglin_dna"
+  },
+  "second_chance": 1.0,
+  "second_output": {
+    "count": 1,
+    "id": "minecraft:leather"
+  }
+}

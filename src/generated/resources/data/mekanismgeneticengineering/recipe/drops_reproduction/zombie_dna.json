@@ -1,0 +1,16 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:rotten_flesh"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:zombie_dna"
+  },
+  "second_chance": 0.05,
+  "second_output": {
+    "count": 1,
+    "id": "minecraft:iron_ingot"
+  }
+}

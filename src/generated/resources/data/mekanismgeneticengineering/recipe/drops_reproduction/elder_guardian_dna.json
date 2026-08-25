@@ -1,0 +1,21 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:prismarine_shard"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:elder_guardian_dna"
+  },
+  "second_chance": 1.0,
+  "second_output": {
+    "count": 1,
+    "id": "minecraft:prismarine_crystals"
+  },
+  "third_chance": 0.02,
+  "third_output": {
+    "count": 1,
+    "id": "minecraft:wet_sponge"
+  }
+}

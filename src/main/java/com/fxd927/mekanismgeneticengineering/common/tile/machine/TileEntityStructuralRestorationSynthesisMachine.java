@@ -154,7 +154,7 @@ public class TileEntityStructuralRestorationSynthesisMachine extends MGETileEnti
     @Override
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener, IContentsListener recipeCacheListener, IContentsListener recipeCacheUnpauseListener) {
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this);
-        builder.addSlot(outputSlot = ChemicalInventorySlot.drain(outputTank, listener, 80, 65));
+        builder.addSlot(outputSlot = ChemicalInventorySlot.drain(outputTank, listener, 154, 56));
         builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 154, 14));
         outputSlot.setSlotType(ContainerSlotType.OUTPUT);
         outputSlot.setSlotOverlay(SlotOverlay.PLUS);

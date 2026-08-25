@@ -1,0 +1,11 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:string"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:cat_dna"
+  }
+}

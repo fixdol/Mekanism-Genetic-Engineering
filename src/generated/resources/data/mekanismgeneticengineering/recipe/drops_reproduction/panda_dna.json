@@ -1,0 +1,11 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:bamboo"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:panda_dna"
+  }
+}

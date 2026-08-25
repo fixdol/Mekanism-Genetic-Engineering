@@ -1,0 +1,16 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:string"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:cave_spider_dna"
+  },
+  "second_chance": 0.3,
+  "second_output": {
+    "count": 1,
+    "id": "minecraft:coal"
+  }
+}

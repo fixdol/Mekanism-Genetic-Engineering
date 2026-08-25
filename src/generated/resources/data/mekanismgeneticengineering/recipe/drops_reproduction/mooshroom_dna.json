@@ -1,0 +1,16 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 2,
+    "id": "minecraft:beef"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:mooshroom_dna"
+  },
+  "second_chance": 1.0,
+  "second_output": {
+    "count": 1,
+    "id": "minecraft:leather"
+  }
+}

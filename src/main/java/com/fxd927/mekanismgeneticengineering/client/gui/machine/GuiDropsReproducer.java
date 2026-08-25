@@ -32,7 +32,7 @@ public class GuiDropsReproducer extends GuiConfigurableTile<TileEntityDropsRepro
         addRenderableWidget(new GuiEnergyTab(this, tile.getEnergyContainer(), tile::getActive));
         addRenderableWidget(new GuiChemicalGauge(() -> tile.inputTank, () -> tile.getChemicalTanks(null), GaugeType.STANDARD, this, 7, 4))
                 .warning(WarningTracker.WarningType.NO_MATCHING_RECIPE, tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_INPUT));
-        addRenderableWidget(new MGEGuiProgress(tile::getScaledProgress, ProgressType.LARGE_RIGHT, this, 30, 43).recipeViewerCategory(tile))
+        addRenderableWidget(new MGEGuiProgress(tile::getScaledProgress, ProgressType.LARGE_RIGHT, this, 40, 40).recipeViewerCategory(tile))
                 .warning(WarningTracker.WarningType.INPUT_DOESNT_PRODUCE_OUTPUT, tile.getWarningCheck(CachedRecipe.OperationTracker.RecipeError.INPUT_DOESNT_PRODUCE_OUTPUT));
     }
 

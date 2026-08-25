@@ -1,0 +1,21 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:chicken"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:chicken_dna"
+  },
+  "second_chance": 1.0,
+  "second_output": {
+    "count": 1,
+    "id": "minecraft:feather"
+  },
+  "third_chance": 0.05,
+  "third_output": {
+    "count": 1,
+    "id": "minecraft:egg"
+  }
+}

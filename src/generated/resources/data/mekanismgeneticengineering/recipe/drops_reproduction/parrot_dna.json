@@ -1,0 +1,11 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:feather"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:parrot_dna"
+  }
+}

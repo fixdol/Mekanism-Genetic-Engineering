@@ -1,0 +1,19 @@
+{
+  "type": "mekanismgeneticengineering:nuclear_acid_centrifuge",
+  "first_input": {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:chloroform"
+  },
+  "item_input": {
+    "count": 1,
+    "item": "minecraft:porkchop"
+  },
+  "output": {
+    "amount": 500,
+    "id": "mekanismgeneticengineering:pig_dna"
+  },
+  "second_input": {
+    "amount": 100,
+    "chemical": "mekanismgeneticengineering:phenol"
+  }
+}

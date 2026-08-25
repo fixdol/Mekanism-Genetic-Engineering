@@ -1,0 +1,16 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:bone"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:stray_dna"
+  },
+  "second_chance": 1.0,
+  "second_output": {
+    "count": 1,
+    "id": "minecraft:arrow"
+  }
+}

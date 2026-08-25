@@ -1,0 +1,16 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:pufferfish"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:pufferfish_dna"
+  },
+  "second_chance": 0.1,
+  "second_output": {
+    "count": 1,
+    "id": "minecraft:bone_meal"
+  }
+}

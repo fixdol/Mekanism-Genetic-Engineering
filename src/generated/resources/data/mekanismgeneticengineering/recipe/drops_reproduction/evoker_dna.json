@@ -1,0 +1,16 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:emerald"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:evoker_dna"
+  },
+  "second_chance": 0.02,
+  "second_output": {
+    "count": 1,
+    "id": "minecraft:totem_of_undying"
+  }
+}

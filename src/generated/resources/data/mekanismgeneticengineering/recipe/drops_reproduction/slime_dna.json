@@ -1,0 +1,11 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:slime_ball"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:slime_dna"
+  }
+}

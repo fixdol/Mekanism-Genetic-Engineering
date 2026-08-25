@@ -31,6 +31,7 @@ import mekanism.common.integration.computer.SpecialComputerMethodWrapper;
 import mekanism.common.integration.computer.annotation.ComputerMethod;
 import mekanism.common.integration.computer.annotation.WrappingComputerMethod;
 import mekanism.common.integration.computer.computercraft.ComputerConstants;
+import mekanism.common.inventory.container.slot.SlotOverlay;
 import mekanism.common.inventory.slot.EnergyInventorySlot;
 import mekanism.common.inventory.slot.OutputInventorySlot;
 import mekanism.common.inventory.slot.chemical.ChemicalInventorySlot;
@@ -118,12 +119,13 @@ public class TileEntityDropsReproducer extends MGETileEntityProgressMachine<Drop
     @Override
     protected IInventorySlotHolder getInitialInventory(IContentsListener listener, IContentsListener recipeCacheListener, IContentsListener recipeCacheUnpauseListener) {
         InventorySlotHelper builder = InventorySlotHelper.forSideWithConfig(this);
-        builder.addSlot(inputSlot = ChemicalInventorySlot.fill(inputTank, recipeCacheListener, 56, 17))
+        builder.addSlot(inputSlot = ChemicalInventorySlot.fill(inputTank, recipeCacheListener, 8, 65))
                 .tracksWarnings(slot -> slot.warning(WarningTracker.WarningType.NO_MATCHING_RECIPE, getWarningCheck(CachedRecipe.OperationTracker.RecipeError.NOT_ENOUGH_INPUT)));
         builder.addSlot(firstOutputSlot = OutputInventorySlot.at(recipeCacheUnpauseListener, 100, 35));
         builder.addSlot(secondOutputSlot = OutputInventorySlot.at(recipeCacheUnpauseListener, 118, 35));
         builder.addSlot(thirdOutputSlot = OutputInventorySlot.at(recipeCacheUnpauseListener, 136, 35));
-        builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 56, 53));
+        builder.addSlot(energySlot = EnergyInventorySlot.fillOrConvert(energyContainer, this::getLevel, listener, 153, 7));
+        inputSlot.setSlotOverlay(SlotOverlay.MINUS);
         return builder.build();
     }
 

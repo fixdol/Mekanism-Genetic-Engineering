@@ -1,0 +1,21 @@
+{
+  "type": "mekanismgeneticengineering:drops_reproduction",
+  "first_output": {
+    "count": 1,
+    "id": "minecraft:bone"
+  },
+  "input": {
+    "amount": 1000,
+    "chemical": "mekanismgeneticengineering:wither_skeleton_dna"
+  },
+  "second_chance": 1.0,
+  "second_output": {
+    "count": 1,
+    "id": "minecraft:coal"
+  },
+  "third_chance": 0.03,
+  "third_output": {
+    "count": 1,
+    "id": "minecraft:wither_skeleton_skull"
+  }
+}

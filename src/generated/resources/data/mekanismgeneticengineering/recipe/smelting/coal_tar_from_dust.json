@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.7,
+  "group": "coal_tar",
+  "ingredient": {
+    "item": "mekanism:dust_coal"
+  },
+  "result": {
+    "count": 1,
+    "id": "mekanismgeneticengineering:coal_tar"
+  }
+}
